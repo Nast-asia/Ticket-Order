@@ -16,7 +16,6 @@ final class CommandProvider {
         commands.put("RETURN_TICKET", new ReturnTicket());
         commands.put("SEE_CURRENT_TICKETS", new SeeCurrentTickets());
         commands.put("CHANGE_CREDIT_CARD", new ChangeCreditCard());
-        commands.put("INIT", new Init());
         commands.put("WRONG_REQUEST", new WrongRequest());
     }
 
