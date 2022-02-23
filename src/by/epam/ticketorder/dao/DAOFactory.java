@@ -10,8 +10,8 @@ public final class DAOFactory {
     }
     private DAOFactory() {}
 
-    private final PassengerDAO sqlPassenger = new PassengerDAOImp();
+    private final PassengerDAO passengerDAO = new PassengerDAOImp();
     public PassengerDAO getPassengerDAO() {
-        return sqlPassenger;
+        return passengerDAO;
     }
 }
