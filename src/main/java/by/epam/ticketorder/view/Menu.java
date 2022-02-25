@@ -12,8 +12,8 @@ public class Menu {
     Scanner in = new Scanner(System.in);
 
     public void mainMenu() {
-        System.out.println("\n\tБРОНИРОВАНИЕ ЖД БИЛЕТОВ" +
-                "\n1. Войти\n2. Зарегистрироваться\n3. Закрыть приложение");
+        System.out.println("\n\tБРОНИРОВАНИЕ ЖД БИЛЕТОВ");
+        System.out.println("1. Войти\n2. Зарегистрироваться\n3. Закрыть приложение");
         switch (in.next()) {
             case "1" : {
                 signInMenu();
@@ -30,13 +30,14 @@ public class Menu {
             default : {
                 System.out.println("\nНеверный ввод данных, повторите попытку.");
                 mainMenu();
+                break;
             }
         }
     }
 
     public void ticketMenu() {
-        System.out.println("\n\tНАВИГАЦИОННАЯ ПАНЕЛЬ" +
-                "\n1. Купить билет\n2. Сдать билет\n" +
+        System.out.println("\n\tНАВИГАЦИОННАЯ ПАНЕЛЬ");
+        System.out.println("1. Купить билет\n2. Сдать билет\n" +
                 "3. Посмотреть приобретённые билеты" + "\n4. Выйти");
         switch (in.next()) {
             case "1" : {
@@ -59,6 +60,7 @@ public class Menu {
             default : {
                 System.out.println("\nНеверный ввод данных, повторите попытку.");
                 ticketMenu();
+                break;
             }
         }
     }
@@ -66,8 +68,8 @@ public class Menu {
     public void registrationMenu() {
         params.clear();
         params.add("REGISTRATE");
-        System.out.print("\n\tРЕГИСТРАЦИОННАЯ ФОРМА" +
-                "\nИмя: "); params.add(in.next());
+        System.out.println("\n\tРЕГИСТРАЦИОННАЯ ФОРМА");
+        System.out.print("Имя: "); params.add(in.next());
         System.out.print("Фамилия: "); params.add(in.next());
         System.out.print("Логин: "); params.add(in.next());
         System.out.print("Пароль: "); params.add(in.next());
@@ -82,8 +84,8 @@ public class Menu {
     public void signInMenu() {
         params.clear();
         params.add("SIGN_IN");
-        System.out.print("\n\tВОЙТИ В СИСТЕМУ" +
-                "\nЛогин: "); params.add(in.next());
+        System.out.println("\n\tВОЙТИ В СИСТЕМУ");
+        System.out.print("Логин: "); params.add(in.next());
         System.out.print("Пароль: "); params.add(in.next());
 
         switch (controller.doAction(params)) {
@@ -107,8 +109,8 @@ public class Menu {
     public void signOutMenu() {
         params.clear();
         params.add("SIGN_OUT");
-        System.out.println("\n\tВЫЙТИ ИЗ СИСТЕМЫ" +
-                "\nВы действительно хотите выйти? (Y / N)");
+        System.out.println("\n\tВЫЙТИ ИЗ СИСТЕМЫ");
+        System.out.println("Вы действительно хотите выйти? (Y / N)");
         String req = in.next().toUpperCase();
         if (req.equals("Y") || req.equals("YES")) {
             controller.doAction(params);
@@ -135,8 +137,8 @@ public class Menu {
     }
 
     public void exitMenu() {
-        System.out.println("\n\tВЫЙТИ ИЗ ПРИЛОЖЕНИЯ" +
-                "\nВы действительно хотите выйти? (Y / N)");
+        System.out.println("\n\tВЫЙТИ ИЗ ПРИЛОЖЕНИЯ");
+        System.out.println("Вы действительно хотите выйти? (Y / N)");
         String req = in.next().toUpperCase();
         if (req.equals("Y") || req.equals("YES")) {
             System.exit(0);

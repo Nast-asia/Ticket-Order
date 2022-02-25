@@ -11,10 +11,10 @@ import java.util.ArrayList;
 public class Registrate implements Command {
     @Override
     public String execute(ArrayList<String> request) {
-        String login = request.get(1);
-        String password = request.get(2);
-        String name = request.get(3);
-        String surname = request.get(4);
+        String name = request.get(1);
+        String surname = request.get(2);
+        String login = request.get(3);
+        String password = request.get(4);
         String passportNumber = request.get(5);
         CreditCard creditCard = new CreditCard(
                 request.get(6),
