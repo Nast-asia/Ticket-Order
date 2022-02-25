@@ -13,27 +13,24 @@ public class Registrate implements Command {
     public String execute(ArrayList<String> request) {
         String name = request.get(1);
         String surname = request.get(2);
-        String login = request.get(3);
-        String password = request.get(4);
-        String passportNumber = request.get(5);
+        String passportNumber = request.get(3);
         CreditCard creditCard = new CreditCard(
-                request.get(6),
-                Double.parseDouble(request.get(7))
+                request.get(4),
+                Double.parseDouble(request.get(5))
         );
-        String message = "\nРегистрация прошла успешно.";
-        Passenger passenger = new Passenger(name, surname, login, password, passportNumber, creditCard);
+        String login = request.get(6);
+        String password = request.get(7);
+        Passenger passenger = new Passenger(login, password, name, surname, passportNumber, creditCard);
 
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         PassengerService passengerService = serviceFactory.getPassengerService();
 
-        /* открыть после реализации Exception
         try {
-            passengerService.logIn(name, surname, login, password, passportNumber, creditCard);
-        } catch (ServiceException e) {
-            message = "Ошибка регистрации.";
-        } */
-
-        passengerService.logIn(passenger);
-        return message;
+            passengerService.registrate(passenger);
+            return "TICKET_MENU";
+        } catch (Exception e) {
+            // logger ?
+            return "WRONG_REQUEST";
+        }
     }
 }

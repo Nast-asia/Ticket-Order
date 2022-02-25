@@ -18,13 +18,11 @@ public class PassengerDAOImp implements PassengerDAO {
     @Override
     public Passenger readPassenger(String login) {
         ArrayList<Passenger> usersDS = datasource.getUsers();
-        Passenger passenger = new Passenger();
         for (int i = 0; i < usersDS.size(); i++) {
             if (usersDS.get(i).getLogin().equals(login)) {
-                passenger = usersDS.get(i);
-                break;
+                return usersDS.get(i);
             }
         }
-        return passenger;
+        return null;
     }
 }

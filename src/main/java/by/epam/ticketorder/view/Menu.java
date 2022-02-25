@@ -71,14 +71,32 @@ public class Menu {
         System.out.println("\n\tРЕГИСТРАЦИОННАЯ ФОРМА");
         System.out.print("Имя: "); params.add(in.next());
         System.out.print("Фамилия: "); params.add(in.next());
-        System.out.print("Логин: "); params.add(in.next());
-        System.out.print("Пароль: "); params.add(in.next());
         System.out.print("Номер паспорта: "); params.add(in.next());
         System.out.print("Номер банковской карты: "); params.add(in.next());
         System.out.print("Счёт: "); params.add(in.next());
+        System.out.print("Логин: "); params.add(in.next());
+        System.out.print("Пароль: "); params.add(in.next());
 
-        controller.doAction(params);
-        ticketMenu();
+        boolean wrongLogin = true;
+        while(wrongLogin) {
+            switch(controller.doAction(params)) {
+                case "TICKET_MENU" : {
+                    System.out.println("\nРегистрация прошла успешно.");
+                    ticketMenu();
+                    wrongLogin = false;
+                    break;
+                }
+                case "WRONG_REQUEST" : {
+                    System.out.println("\nЛогин уже существует, введите другое значение.");
+                    System.out.print("Логин: "); params.set(6, in.next());
+                    break;
+                }
+                default: {
+                    System.out.println("\nНепредвиденный сбой системы...");
+                    break;
+                }
+            }
+        }
     }
 
     public void signInMenu() {
@@ -100,7 +118,7 @@ public class Menu {
                 break;
             }
             default: {
-                System.out.println("\nПроизошла ошибка...");
+                System.out.println("\nНепредвиденный сбой системы...");
                 break;
             }
         }

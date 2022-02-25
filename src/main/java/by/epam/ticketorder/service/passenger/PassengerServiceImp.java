@@ -8,9 +8,12 @@ import by.epam.ticketorder.exceptions.ServiceException;
 
 public class PassengerServiceImp implements PassengerService {
     @Override
-    public void logIn(Passenger passenger) {
+    public void registrate(Passenger passenger) throws ServiceException {
         DAOFactory daoObjectFactory = DAOFactory.getInstance();
         PassengerDAO passengerDAO = daoObjectFactory.getPassengerDAO();
+
+        if (passengerDAO.readPassenger(passenger.getLogin()) != null)
+            throw new ServiceException("Login already exists.");
         passengerDAO.addPassenger(passenger);
     }
 
