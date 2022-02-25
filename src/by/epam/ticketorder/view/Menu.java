@@ -5,20 +5,11 @@ import by.epam.ticketorder.controller.Controller;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-// создать отдельные классы для вторичных меню
-//которые будут наслежлваться от класса Menu
-public class Menu implements MenuProcessing {
-    Scanner in = new Scanner(System.in);
-
+public class Menu {
     // list for command parameters
     ArrayList<String> params = new ArrayList<>();
     Controller controller = new Controller();
-
-    @Override
-    public void processData(Controller controller) {
-        System.out.println(controller.doAction(params));
-        params.clear();
-    }
+    Scanner in = new Scanner(System.in);
 
     public void mainMenu() {
         System.out.println("\n\tБРОНИРОВАНИЕ ЖД БИЛЕТОВ" +
@@ -29,7 +20,7 @@ public class Menu implements MenuProcessing {
                 break;
             }
             case "2" : {
-                logInMenu();
+                registrationMenu();
                 break;
             }
             case "3" : {
@@ -43,10 +34,10 @@ public class Menu implements MenuProcessing {
         }
     }
 
-    public void secondMenu() {
+    public void ticketMenu() {
         System.out.println("\n\tНАВИГАЦИОННАЯ ПАНЕЛЬ" +
-                "\n1. Купить билет\n2. Сдать билет\n3. Посмотреть приобретённые билеты" +
-                "\n4. Посмотреть расписание\n5. Изменить данные банковской карты\n6. Выйти");
+                "\n1. Купить билет\n2. Сдать билет\n" +
+                "3. Посмотреть приобретённые билеты" + "\n4. Выйти");
         switch (in.next()) {
             case "1" : {
                 buyTicketMenu();
@@ -57,31 +48,24 @@ public class Menu implements MenuProcessing {
                 break;
             }
             case "3" : {
-                seeCurrentTicketsMenu();
+                currentTicketsMenu();
                 break;
             }
             case "4" : {
-                seeTimetableMenu();
-                break;
-            }
-            case "5" : {
-                changeCreditCardMenu();
-                break;
-            }
-            case "6" : {
                 signOutMenu();
                 mainMenu();
                 break;
             }
             default : {
                 System.out.println("\nНеверный ввод данных, повторите попытку.");
-                secondMenu();
+                ticketMenu();
             }
         }
     }
 
-    public void logInMenu() {
-        params.add("LOG_IN");
+    public void registrationMenu() {
+        params.clear();
+        params.add("REGISTRATE");
         System.out.print("\n\tРЕГИСТРАЦИОННАЯ ФОРМА" +
                 "\nИмя: "); params.add(in.next());
         System.out.print("Фамилия: "); params.add(in.next());
@@ -91,36 +75,39 @@ public class Menu implements MenuProcessing {
         System.out.print("Номер банковской карты: "); params.add(in.next());
         System.out.print("Счёт: "); params.add(in.next());
 
-        processData(controller);
-        secondMenu();
+        controller.doAction(params);
+        ticketMenu();
     }
 
     public void signInMenu(){
+        params.clear();
         params.add("SIGN_IN");
         System.out.print("\n\tВОЙТИ В СИСТЕМУ" +
                 "\nЛогин: "); params.add(in.next());
         System.out.print("Пароль: "); params.add(in.next());
 
-        try {
-            processData(controller);
-            params.clear();
-            secondMenu();
-        } catch (Exception e) {
-            params.clear();
-            signInMenu();
+        switch (controller.doAction(params)) {
+            case "TICKET_MENU" : {
+                ticketMenu();
+            }
+            case "SIGN_IN_MENU" : {
+                signInMenu();
+            }
         }
     }
 
     public void signOutMenu() {
+        params.clear();
         params.add("SIGN_OUT");
         System.out.println("\n\tВЫЙТИ ИЗ СИСТЕМЫ" +
                 "\nВы действительно хотите выйти? (Y / N)");
         String req = in.next().toUpperCase();
         if (req.equals("Y") || req.equals("YES")) {
-            processData(controller);
+            controller.doAction(params);
+            params.clear();
             mainMenu();
         } else if (req.equals("N") || req.equals("NO")) {
-            secondMenu();
+            ticketMenu();
         } else {
             System.out.println("\nНеверный ввод данных, повторите попытку.");
             signOutMenu();
@@ -135,15 +122,7 @@ public class Menu implements MenuProcessing {
 
     }
 
-    public void seeCurrentTicketsMenu() {
-
-    }
-
-    public void seeTimetableMenu() {
-
-    }
-
-    public void changeCreditCardMenu() {
+    public void currentTicketsMenu() {
 
     }
 
