@@ -79,7 +79,7 @@ public class Menu {
         ticketMenu();
     }
 
-    public void signInMenu(){
+    public void signInMenu() {
         params.clear();
         params.add("SIGN_IN");
         System.out.print("\n\tВОЙТИ В СИСТЕМУ" +
@@ -88,10 +88,18 @@ public class Menu {
 
         switch (controller.doAction(params)) {
             case "TICKET_MENU" : {
+                System.out.println("\nВы вошли в систему.");
                 ticketMenu();
+                break;
             }
             case "SIGN_IN_MENU" : {
+                System.out.println("\nНеверный логин или пароль.");
                 signInMenu();
+                break;
+            }
+            default: {
+                System.out.println("\nПроизошла ошибка...");
+                break;
             }
         }
     }
