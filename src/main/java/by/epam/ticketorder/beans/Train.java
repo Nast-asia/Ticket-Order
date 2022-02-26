@@ -5,7 +5,7 @@ import java.util.HashMap;
 public class Train {
     private Route route;
     private String trainType;
-    private HashMap<String, Integer> freeSeatsNumber;
+    private int freeSeatsNumber;
 
     public Route getRoute() {
         return route;
@@ -21,14 +21,14 @@ public class Train {
         this.trainType = trainType;
     }
 
-    public HashMap<String, Integer> getFreeSeatsNumber() {
+    public int getFreeSeatsNumber() {
         return freeSeatsNumber;
     }
-    public void setFreeSeatsNumber(HashMap<String, Integer> freeSeatsNumber) {
+    public void setFreeSeatsNumber(int freeSeatsNumber) {
         this.freeSeatsNumber = freeSeatsNumber;
     }
 
-    public Train(Route route, String trainType, HashMap<String, Integer> freeSeatsNumber) {
+    public Train(Route route, String trainType, int freeSeatsNumber) {
         this.route = route;
         this.trainType = trainType;
         this.freeSeatsNumber = freeSeatsNumber;
