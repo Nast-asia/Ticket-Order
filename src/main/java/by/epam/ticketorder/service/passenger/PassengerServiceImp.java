@@ -28,9 +28,4 @@ public class PassengerServiceImp implements PassengerService {
         if (!passenger.getPassword().equals(password))
             throw new ServiceException("Incorrect password.");
     }
-
-    @Override
-    public void signOut() {
-        // возможно, пригодится после обработки исключений
-    }
 }

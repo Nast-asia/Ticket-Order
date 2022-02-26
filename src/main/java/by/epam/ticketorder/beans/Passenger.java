@@ -60,13 +60,14 @@ public class Passenger {
         this.tickets = tickets;
     }
 
-    public Passenger(String login, String password, String name, String surname, String passportNumber, CreditCard creditCard) {
+    public Passenger(String login, String password, String name, String surname, String passportNumber, CreditCard creditCard, ArrayList<Ticket> tickets) {
         this.login = login;
         this.password = password;
         this.name = name;
         this.surname = surname;
         this.passportNumber = passportNumber;
         this.creditCard = creditCard;
+        this.tickets = tickets;
     }
 
     public Passenger() {

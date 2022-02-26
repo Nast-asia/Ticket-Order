@@ -20,7 +20,7 @@ public class Registrate implements Command {
         );
         String login = request.get(6);
         String password = request.get(7);
-        Passenger passenger = new Passenger(login, password, name, surname, passportNumber, creditCard);
+        Passenger passenger = new Passenger(login, password, name, surname, passportNumber, creditCard, null);
 
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         PassengerService passengerService = serviceFactory.getPassengerService();

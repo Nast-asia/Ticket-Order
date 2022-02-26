@@ -9,15 +9,6 @@ import java.util.ArrayList;
 public class SignOut implements Command {
     @Override
     public String execute(ArrayList<String> request) {
-        String message = "\nВы вышли из системы.";
-
-        /* открыть после реализации Exception
-        try {
-            passengerService.signOut();
-        } catch (ServiceException e) {
-            message = "Ошибка выхода из системы.";
-        } */
-
-        return message;
+        return "\nВы вышли из системы.";
     }
 }
