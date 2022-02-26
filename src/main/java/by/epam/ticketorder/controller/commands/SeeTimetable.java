@@ -23,7 +23,9 @@ public class SeeTimetable implements Command {
             for (int i = 0; i < timetable.size(); i++) {
                 System.out.println(timetable.get(i).getRoute().getDepartureTime() + " - " +
                         timetable.get(i).getRoute().getArrivalTime() + "\t" +
-                        timetable.get(i).getFreeSeatsNumber());
+                        timetable.get(i).getTrainType() + "\t" +
+                        "Места: " + timetable.get(i).getFreeSeatsNumber()
+                );
             }
             return "BUY_TICKET";
         } catch (Exception e) {
