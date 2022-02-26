@@ -1,6 +1,8 @@
 package by.epam.ticketorder.dao;
 
 import by.epam.ticketorder.beans.Passenger;
+import by.epam.ticketorder.beans.Route;
+import by.epam.ticketorder.beans.Train;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,7 +13,7 @@ import java.util.HashMap;
 
 public class DataSource {
     public ArrayList<Passenger> users = new ArrayList<>();
-    public HashMap<String, String> registrationData = new HashMap<>();
+    public ArrayList<Train> trains = new ArrayList<>();
 
     public ArrayList<Passenger> getUsers() {
         return users;
@@ -20,10 +22,10 @@ public class DataSource {
         this.users = users;
     }
 
-    public HashMap<String, String> getRegistrationData() {
-        return registrationData;
+    public ArrayList<Train> getTrains() {
+        return trains;
     }
-    public void setRegistrationData(HashMap<String, String> registrationData) {
-        this.registrationData = registrationData;
+    public void setTrains(ArrayList<Train> trains) {
+        this.trains = trains;
     }
 }

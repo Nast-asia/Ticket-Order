@@ -41,7 +41,7 @@ public class Menu {
                 "3. Посмотреть приобретённые билеты" + "\n4. Выйти");
         switch (in.next()) {
             case "1" : {
-                buyTicketMenu();
+                seeTimetableMenu();
                 break;
             }
             case "2" : {
@@ -131,7 +131,7 @@ public class Menu {
         System.out.println("Вы действительно хотите выйти? (Y / N)");
         String req = in.next().toUpperCase();
         if (req.equals("Y") || req.equals("YES")) {
-            controller.doAction(params);
+            System.out.println(controller.doAction(params));
             params.clear();
             mainMenu();
         } else if (req.equals("N") || req.equals("NO")) {
@@ -142,7 +142,43 @@ public class Menu {
         }
     }
 
-    public void buyTicketMenu() {
+    public void seeTimetableMenu() {
+        params.clear();
+        params.add("SEE_TIMETABLE");
+        System.out.println("\n\tВЫБОР МАРШРУТА");
+        System.out.print("Пункт отправления: "); params.add(in.next());
+        System.out.print("Пункт прибытия: "); params.add(in.next());
+        System.out.print("Дата (DD.MM.HH): "); params.add(in.next());
+
+        switch (controller.doAction(params)) {
+            case "BUY_TICKET" : {
+                buyTicketMenu(params);
+                break;
+            }
+            case "SEE_TIMETABLE" : {
+                System.out.println("\nПо указанному маршруту поездов нет." +
+                        "\nЖелаете выбрать другой? (Y / N)");
+                do {
+                    String req = in.next().toUpperCase();
+                    if (req.equals("Y") || req.equals("YES")) {
+                        seeTimetableMenu();
+                        break;
+                    } else if (req.equals("N") || req.equals("NO")) {
+                        ticketMenu();
+                        break;
+                    } else {
+                        System.out.println("\nНеверный ввод данных, повторите попытку.");
+                    }
+                } while (true);
+                break;
+            }
+            default: {
+                System.out.println("\nНепредвиденный сбой системы...");
+            }
+        }
+    }
+
+    public void buyTicketMenu(ArrayList<String> params) {
 
     }
 

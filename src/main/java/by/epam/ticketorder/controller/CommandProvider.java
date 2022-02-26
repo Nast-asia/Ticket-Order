@@ -11,6 +11,7 @@ final class CommandProvider {
         commands.put("REGISTRATE", new Registrate());
         commands.put("SIGN_IN", new SignIn());
         commands.put("SIGN_OUT", new SignOut());
+        commands.put("SEE_TIMETABLE", new SeeTimetable());
         commands.put("BUY_TICKET", new BuyTicket());
         commands.put("RETURN_TICKET", new ReturnTicket());
         commands.put("SEE_CURRENT_TICKETS", new SeeCurrentTickets());
