@@ -27,10 +27,10 @@ public class SeeTimetable implements Command {
                         "Места: " + timetable.get(i).getFreeSeatsNumber()
                 );
             }
-            return "BUY_TICKET";
+            return "BUY_TICKET_MENU";
         } catch (Exception e) {
             // logger ?
-            return "SEE_TIMETABLE";
+            return "SEE_TIMETABLE_MENU";
         }
     }
 }

@@ -49,7 +49,7 @@ public class Menu {
                 break;
             }
             case "3" : {
-                currentTicketsMenu();
+                seeCurrentTicketsMenu();
                 break;
             }
             case "4" : {
@@ -151,11 +151,11 @@ public class Menu {
         System.out.print("Дата (DD.MM.HH): "); params.add(in.next());
 
         switch (controller.doAction(params)) {
-            case "BUY_TICKET" : {
+            case "BUY_TICKET_MENU" : {
                 buyTicketMenu(params);
                 break;
             }
-            case "SEE_TIMETABLE" : {
+            case "SEE_TIMETABLE_MENU" : {
                 System.out.println("\nПо указанному маршруту поездов нет." +
                         "\nЖелаете выбрать другой? (Y / N)");
                 do {
@@ -174,19 +174,51 @@ public class Menu {
             }
             default: {
                 System.out.println("\nНепредвиденный сбой системы...");
+                break;
             }
         }
     }
 
     public void buyTicketMenu(ArrayList<String> params) {
-
+        params.remove(0);
+        params.add(0, "BUY_TICKET");
+        System.out.println("\n\tВЫБОР ПОЕЗДА");
+        System.out.print("Время отправления: "); params.add(in.next());
+        switch (controller.doAction(params)) {
+            case "BUY_TICKET_MENU" : {
+                System.out.println("\nК сожалению, вам отказано в покупке билета.");
+                System.out.println("\nЖелаете попробовать еще раз? (Y / N)");
+                do {
+                    String req = in.next().toUpperCase();
+                    if (req.equals("Y") || req.equals("YES")) {
+                        buyTicketMenu(params);
+                        break;
+                    } else if (req.equals("N") || req.equals("NO")) {
+                        ticketMenu();
+                        break;
+                    } else {
+                        System.out.println("\nНеверный ввод данных, повторите попытку.");
+                    }
+                } while (true);
+                break;
+            }
+            case "SEE_CURRENT_TICKETS_MENU" : {
+                System.out.println("\nВы успешно приобрели билет.");
+                seeCurrentTicketsMenu();
+                break;
+            }
+            default: {
+                System.out.println("\nНепредвиденный сбой системы...");
+                break;
+            }
+        }
     }
 
     public void returnTicketMenu() {
 
     }
 
-    public void currentTicketsMenu() {
+    public void seeCurrentTicketsMenu() {
 
     }
 

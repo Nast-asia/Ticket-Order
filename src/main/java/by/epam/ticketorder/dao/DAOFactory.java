@@ -5,6 +5,8 @@ import by.epam.ticketorder.dao.passenger.PassengerDAO;
 import by.epam.ticketorder.dao.passenger.PassengerDAOImp;
 import by.epam.ticketorder.dao.route.RouteDAO;
 import by.epam.ticketorder.dao.route.RouteDAOImp;
+import by.epam.ticketorder.dao.ticket.TicketDAO;
+import by.epam.ticketorder.dao.ticket.TicketDAOImp;
 import by.epam.ticketorder.dao.train.TrainDAO;
 import by.epam.ticketorder.dao.train.TrainDAOImp;
 
@@ -28,5 +30,10 @@ public final class DAOFactory {
     private final TrainDAO trainDAO = new TrainDAOImp();
     public TrainDAO getTrainDAO() {
         return trainDAO;
+    }
+
+    private final TicketDAO ticketDAO = new TicketDAOImp();
+    public TicketDAO getTicketDAO() {
+        return ticketDAO;
     }
 }

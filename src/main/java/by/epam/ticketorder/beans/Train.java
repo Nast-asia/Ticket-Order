@@ -6,6 +6,7 @@ public class Train {
     private Route route;
     private String trainType;
     private int freeSeatsNumber;
+    private double price;
 
     public Route getRoute() {
         return route;
@@ -28,10 +29,18 @@ public class Train {
         this.freeSeatsNumber = freeSeatsNumber;
     }
 
-    public Train(Route route, String trainType, int freeSeatsNumber) {
+    public double getPrice() {
+        return price;
+    }
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public Train(Route route, String trainType, int freeSeatsNumber, double price) {
         this.route = route;
         this.trainType = trainType;
         this.freeSeatsNumber = freeSeatsNumber;
+        this.price = price;
     }
 
     public Train() {

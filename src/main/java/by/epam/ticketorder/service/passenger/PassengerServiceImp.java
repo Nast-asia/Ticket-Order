@@ -11,7 +11,6 @@ public class PassengerServiceImp implements PassengerService {
     public void registrate(Passenger passenger) throws ServiceException {
         DAOFactory daoObjectFactory = DAOFactory.getInstance();
         PassengerDAO passengerDAO = daoObjectFactory.getPassengerDAO();
-
         if (passengerDAO.readPassenger(passenger.getLogin()) != null)
             throw new ServiceException("Login already exists.");
         passengerDAO.addPassenger(passenger);

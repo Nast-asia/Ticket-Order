@@ -7,6 +7,6 @@ import java.util.ArrayList;
 
 public interface TrainDAO {
     void addTrain(Train train);
-    Train readTrain(Route route);
+    Train readTrain(String pointA, String pointB, String date, String departureTime);
     ArrayList<Train> readAllTrains();
 }

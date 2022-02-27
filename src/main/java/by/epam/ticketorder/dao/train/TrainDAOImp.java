@@ -17,10 +17,13 @@ public class TrainDAOImp implements TrainDAO {
     }
 
     @Override
-    public Train readTrain(Route route) {
+    public Train readTrain(String pointA, String pointB, String date, String departureTime) {
         ArrayList<Train> trainsDS = datasource.getTrains();
         for (int i = 0; i < trainsDS.size(); i++) {
-            if (trainsDS.get(i).getRoute().equals(route))
+            Route route = trainsDS.get(i).getRoute();
+            if (route.getPointA().equals(pointA) &&
+                    route.getPointB().equals(pointB) &&
+                    route.getDate().equals(date))
                 return trainsDS.get(i);
         }
         return null;
