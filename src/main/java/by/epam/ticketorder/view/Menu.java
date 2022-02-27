@@ -1,6 +1,8 @@
 package by.epam.ticketorder.view;
 
 import by.epam.ticketorder.controller.Controller;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -10,8 +12,10 @@ public class Menu {
     ArrayList<String> params = new ArrayList<>();
     Controller controller = new Controller();
     Scanner in = new Scanner(System.in);
+    private final Logger logger = LogManager.getRootLogger();
 
     public void mainMenu() {
+        logger.debug("Main menu is opened.");
         System.out.println("\n\tБРОНИРОВАНИЕ ЖД БИЛЕТОВ");
         System.out.println("1. Войти\n2. Зарегистрироваться\n3. Закрыть приложение");
         switch (in.next()) {
@@ -28,14 +32,17 @@ public class Menu {
                 break;
             }
             default : {
+                logger.error("Invalid input data.");
                 System.out.println("\nНеверный ввод данных, повторите попытку.");
                 mainMenu();
                 break;
             }
         }
+        logger.debug("Main menu is closed.");
     }
 
     public void ticketMenu() {
+        logger.debug("Ticket menu is opened.");
         System.out.println("\n\tНАВИГАЦИОННАЯ ПАНЕЛЬ");
         System.out.println("1. Купить билет\n2. Сдать билет\n" +
                 "3. Посмотреть приобретённые билеты" + "\n4. Выйти");
@@ -58,14 +65,17 @@ public class Menu {
                 break;
             }
             default : {
+                logger.error("Invalid input data.");
                 System.out.println("\nНеверный ввод данных, повторите попытку.");
                 ticketMenu();
                 break;
             }
         }
+        logger.debug("Ticket menu is closed.");
     }
 
     public void registrationMenu() {
+        logger.debug("Registration menu is opened.");
         params.clear();
         params.add("REGISTRATE");
         System.out.println("\n\tРЕГИСТРАЦИОННАЯ ФОРМА");
@@ -81,6 +91,7 @@ public class Menu {
         while(wrongLogin) {
             switch(controller.doAction(params)) {
                 case "TICKET_MENU" : {
+                    logger.info("Registration is good.");
                     System.out.println("\nРегистрация прошла успешно.");
                     ticketMenu();
                     wrongLogin = false;
@@ -92,14 +103,17 @@ public class Menu {
                     break;
                 }
                 default: {
+                    logger.fatal("METHOD ERROR! CHECK THE CODE!");
                     System.out.println("\nНепредвиденный сбой системы...");
                     break;
                 }
             }
         }
+        logger.debug("Registration menu is closed.");
     }
 
     public void signInMenu() {
+        logger.debug("SignIn menu is opened.");
         params.clear();
         params.add("SIGN_IN");
         System.out.println("\n\tВОЙТИ В СИСТЕМУ");
@@ -108,6 +122,7 @@ public class Menu {
 
         switch (controller.doAction(params)) {
             case "TICKET_MENU" : {
+                logger.info("User is signed in.");
                 System.out.println("\nВы вошли в систему.");
                 ticketMenu();
                 break;
@@ -118,13 +133,16 @@ public class Menu {
                 break;
             }
             default: {
+                logger.fatal("METHOD ERROR! CHECK THE CODE!");
                 System.out.println("\nНепредвиденный сбой системы...");
                 break;
             }
         }
+        logger.debug("SignIn menu is closed.");
     }
 
     public void signOutMenu() {
+        logger.debug("SignOut menu is opened.");
         params.clear();
         params.add("SIGN_OUT");
         System.out.println("\n\tВЫЙТИ ИЗ СИСТЕМЫ");
@@ -137,12 +155,15 @@ public class Menu {
         } else if (req.equals("N") || req.equals("NO")) {
             ticketMenu();
         } else {
+            logger.error("Invalid input data.");
             System.out.println("\nНеверный ввод данных, повторите попытку.");
             signOutMenu();
         }
+        logger.debug("SignOut menu is closed.");
     }
 
     public void seeTimetableMenu() {
+        logger.debug("Timetable menu is opened.");
         params.clear();
         params.add("SEE_TIMETABLE");
         System.out.println("\n\tВЫБОР МАРШРУТА");
@@ -167,19 +188,23 @@ public class Menu {
                         ticketMenu();
                         break;
                     } else {
+                        logger.error("Invalid input data.");
                         System.out.println("\nНеверный ввод данных, повторите попытку.");
                     }
                 } while (true);
                 break;
             }
             default: {
+                logger.fatal("METHOD ERROR! CHECK THE CODE!");
                 System.out.println("\nНепредвиденный сбой системы...");
                 break;
             }
         }
+        logger.debug("Timetable menu is closed.");
     }
 
     public void buyTicketMenu(ArrayList<String> params) {
+        logger.debug("BuyTicket menu is opened.");
         params.remove(0);
         params.add(0, "BUY_TICKET");
         System.out.println("\n\tВЫБОР ПОЕЗДА");
@@ -197,32 +222,39 @@ public class Menu {
                         ticketMenu();
                         break;
                     } else {
+                        logger.error("Invalid input data.");
                         System.out.println("\nНеверный ввод данных, повторите попытку.");
                     }
                 } while (true);
                 break;
             }
             case "SEE_CURRENT_TICKETS_MENU" : {
+                logger.info("Ticket is bought.");
                 System.out.println("\nВы успешно приобрели билет.");
                 seeCurrentTicketsMenu();
                 break;
             }
             default: {
+                logger.fatal("METHOD ERROR! CHECK THE CODE!");
                 System.out.println("\nНепредвиденный сбой системы...");
                 break;
             }
         }
+        logger.debug("BuyTicket menu is closed.");
     }
 
     public void returnTicketMenu() {
-
+        logger.debug("ReturnTicket menu is opened.");
+        logger.debug("ReturnTicket menu is closed.");
     }
 
     public void seeCurrentTicketsMenu() {
-
+        logger.debug("CurrentTickets menu is opened.");
+        logger.debug("CurrentTickets menu is closed.");
     }
 
     public void exitMenu() {
+        logger.debug("Exit menu is opened.");
         System.out.println("\n\tВЫЙТИ ИЗ ПРИЛОЖЕНИЯ");
         System.out.println("Вы действительно хотите выйти? (Y / N)");
         String req = in.next().toUpperCase();
@@ -231,8 +263,10 @@ public class Menu {
         } else if (req.equals("N") || req.equals("NO")) {
             mainMenu();
         } else {
+            logger.error("Invalid input data.");
             System.out.println("\nНеверный ввод данных, повторите попытку.");
             exitMenu();
         }
+        logger.debug("Exit menu is closed.");
     }
 }

@@ -5,10 +5,15 @@ import by.epam.ticketorder.service.ServiceFactory;
 import by.epam.ticketorder.service.passenger.PassengerService;
 
 import java.util.ArrayList;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class SeeCurrentTickets implements Command {
+    private final Logger logger = LogManager.getRootLogger();
+
     @Override
     public String execute(ArrayList<String> request) {
+        logger.debug("SeeCurrentTickets method is started.");
         String message = null;
 
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
@@ -22,6 +27,7 @@ public class SeeCurrentTickets implements Command {
             message = "Ошибка входа в систему.";
         } */
 
+        logger.debug("SeeCurrentTickets method is closed.");
         return message;
     }
 }

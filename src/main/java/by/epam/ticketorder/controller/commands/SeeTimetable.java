@@ -6,10 +6,15 @@ import by.epam.ticketorder.service.ServiceFactory;
 import by.epam.ticketorder.service.route.RouteService;
 
 import java.util.ArrayList;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class SeeTimetable implements Command {
+    private final Logger logger = LogManager.getRootLogger();
+
     @Override
     public String execute(ArrayList<String> request) {
+        logger.debug("SeeTimetable method is started.");
         String pointA = request.get(1).toUpperCase();
         String pointB = request.get(2).toUpperCase();
         String date = request.get(3);
@@ -27,9 +32,11 @@ public class SeeTimetable implements Command {
                         "Места: " + timetable.get(i).getFreeSeatsNumber()
                 );
             }
+            logger.debug("SeeTimetable method is closed.");
             return "BUY_TICKET_MENU";
         } catch (Exception e) {
-            // logger ?
+            logger.debug("SeeTimetable method is closed.");
+            logger.error(e.getMessage());
             return "SEE_TIMETABLE_MENU";
         }
     }
