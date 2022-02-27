@@ -1,0 +1,16 @@
+unnamed package
+by.epam.ticketorder.beans
+by.epam.ticketorder.controller
+by.epam.ticketorder.controller.commands
+by.epam.ticketorder.dao
+by.epam.ticketorder.dao.passenger
+by.epam.ticketorder.dao.route
+by.epam.ticketorder.dao.ticket
+by.epam.ticketorder.dao.train
+by.epam.ticketorder.exceptions
+by.epam.ticketorder.service
+by.epam.ticketorder.service.passenger
+by.epam.ticketorder.service.route
+by.epam.ticketorder.service.ticket
+by.epam.ticketorder.service.train
+by.epam.ticketorder.view
