@@ -26,5 +26,11 @@ public class PassengerServiceImp implements PassengerService {
         Passenger passenger = passengerDAO.readPassenger(login);
         if (!passenger.getPassword().equals(password))
             throw new ServiceException("Incorrect password.");
+
+        //TODO: change Passenger.online
+        //FIXME: change dao.PassengerDAOImp.readPassengerOnline()
+        //FIXME: change dao.PassengerDAOImp.changePassengerOnline()
     }
+
+    //TODO: public void signOut()
 }

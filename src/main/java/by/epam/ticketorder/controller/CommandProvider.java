@@ -4,9 +4,20 @@ import by.epam.ticketorder.controller.commands.*;
 
 import java.util.HashMap;
 
+/**
+ * Класс для взаимодействия контроллера с классами команд
+ */
+
 final class CommandProvider {
+    /**
+     * Поле хранения названий и конструкторов существующих команд
+     */
     private final HashMap<String, Command> commands = new HashMap<>();
 
+    /**
+     * Конструктор - при создании объекта класса добавляет в лист
+     * название команды и конструктор класса данной команды
+     */
     CommandProvider() {
         commands.put("REGISTRATE", new Registrate());
         commands.put("SIGN_IN", new SignIn());
@@ -18,6 +29,11 @@ final class CommandProvider {
         commands.put("WRONG_REQUEST", new WrongRequest());
     }
 
+    /**
+     * Выбор команды для выполнения
+     * @return конструктор класса команды, указанную в переданных параметрах
+     * @param name название вызываемой команды
+     */
     Command getCommand(String name) {
         try {
             return commands.get(name);

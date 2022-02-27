@@ -8,9 +8,18 @@ import java.util.ArrayList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+/**
+ * Класс команды покупки билета
+ */
+
 public class BuyTicket implements Command {
     private final Logger logger = LogManager.getRootLogger();
 
+    /**
+     * Покупка билета пользователем
+     * @param request данные о вызываемой команде и введенные пользователем
+     * @return название меню, вызванное действиями пользователя
+     */
     @Override
     public String execute(ArrayList<String> request) {
         logger.debug("BuyTicket method is started.");
@@ -23,6 +32,7 @@ public class BuyTicket implements Command {
         TicketService ticketService = serviceFactory.getTicketService();
 
         try {
+            //FIXME: see service.TicketService.buyTicket()
             ticketService.buyTicket(pointA, pointB, date, departureTime);
             logger.debug("BuyTicket method is closed.");
             return "SEE_CURRENT_TICKETS_MENU";

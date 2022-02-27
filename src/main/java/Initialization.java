@@ -6,10 +6,14 @@ import by.epam.ticketorder.dao.DAOFactory;
 import by.epam.ticketorder.dao.passenger.PassengerDAO;
 import by.epam.ticketorder.dao.train.TrainDAO;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+/**
+ * Класс инициализации данных перед вызовом меню
+ */
 
 public class Initialization {
+    /**
+     * Инициализация данных, необходимых для работы программы
+     */
     public static void init() {
         DAOFactory daoObjectFactory = DAOFactory.getInstance();
 

@@ -10,6 +10,7 @@ public class Passenger {
     private String passportNumber;
     private CreditCard creditCard;
     private ArrayList<Ticket> tickets;
+    //TODO: private boolean online
 
     public String getLogin() {
         return login;
@@ -60,6 +61,8 @@ public class Passenger {
         this.tickets = tickets;
     }
 
+    //TODO: add getter and setter to the field online
+
     public Passenger(String login, String password, String name, String surname, String passportNumber, CreditCard creditCard, ArrayList<Ticket> tickets) {
         this.login = login;
         this.password = password;
@@ -68,6 +71,7 @@ public class Passenger {
         this.passportNumber = passportNumber;
         this.creditCard = creditCard;
         this.tickets = tickets;
+        //TODO: add the field online to the constructor
     }
 
     public Passenger() {

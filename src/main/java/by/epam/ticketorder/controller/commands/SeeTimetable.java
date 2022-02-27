@@ -9,9 +9,18 @@ import java.util.ArrayList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+/**
+ * Класс команды просмотра расписания поездов
+ */
+
 public class SeeTimetable implements Command {
     private final Logger logger = LogManager.getRootLogger();
 
+    /**
+     * Просмотр пользователем расписания поездов
+     * @param request данные о вызываемой команде и введенные пользователем
+     * @return название меню, вызванное действиями пользователя
+     */
     @Override
     public String execute(ArrayList<String> request) {
         logger.debug("SeeTimetable method is started.");

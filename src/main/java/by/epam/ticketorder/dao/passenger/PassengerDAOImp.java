@@ -25,4 +25,8 @@ public class PassengerDAOImp implements PassengerDAO {
         }
         return null;
     }
+
+    //TODO: public boolean readPassengerOnline(String login)
+    //TODO: public boolean changePassengerOnline(String login)
+    //FIXME: add method to PassengerDAO interface
 }

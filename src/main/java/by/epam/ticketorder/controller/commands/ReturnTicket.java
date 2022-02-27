@@ -8,26 +8,29 @@ import java.util.ArrayList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+/**
+ * Класс команды возврата билета
+ */
+
 public class ReturnTicket implements Command {
     private final Logger logger = LogManager.getRootLogger();
 
+    /**
+     * Возврат билета пользователем
+     * @param request данные о вызываемой команде и введенные пользователем
+     * @return название меню, вызванное действиями пользователя
+     */
     @Override
     public String execute(ArrayList<String> request) {
-        logger.debug("ReturnTicket method is started.");
-        String message = null;
+        //TODO: change service.TicketService.returnTicket()
 
+        logger.debug("ReturnTicket method is started.");
+
+        //FIXME: PassengerService -> TicketService
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         PassengerService passengerService = serviceFactory.getPassengerService();
 
-        /* открыть после реализации Exception
-        try {
-            passengerService.signIn(login, password);
-            message = "Вы вошли в систему.";
-        } catch (ServiceException e) {
-            message = "Ошибка входа в систему.";
-        } */
-
         logger.debug("ReturnTicket method is closed.");
-        return message;
+        return null;
     }
 }

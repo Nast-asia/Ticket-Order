@@ -10,9 +10,18 @@ import java.util.ArrayList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+/**
+ * Класс команды регистрации пользователя
+ */
+
 public class Registrate implements Command {
     private final Logger logger = LogManager.getRootLogger();
 
+    /**
+     * Регистрация пользователя
+     * @param request данные о вызываемой команде и введенные пользователем
+     * @return название меню, вызванное действиями пользователя
+     */
     @Override
     public String execute(ArrayList<String> request) {
         logger.debug("Registrate method is started.");
@@ -26,10 +35,12 @@ public class Registrate implements Command {
         String login = request.get(6);
         String password = request.get(7);
         Passenger passenger = new Passenger(login, password, name, surname, passportNumber, creditCard, null);
+        //TODO: boolean online = true
 
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         PassengerService passengerService = serviceFactory.getPassengerService();
 
+        //TODO: change Passenger.online in servise.PassengerService.registrate()
         try {
             passengerService.registrate(passenger);
             logger.debug("Registrate method is closed.");

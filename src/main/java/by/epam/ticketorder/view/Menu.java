@@ -7,13 +7,27 @@ import org.apache.logging.log4j.Logger;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Класс меню для взаимодействия с пользователем,
+ * вызывает методы в зависимости от действий пользователя
+ */
+
 public class Menu {
-    // list for command parameters
+    /**
+     * params - лист для хранения и передачи параметров пользователя
+     * controller - объект класса контроллера для вызова команд
+     * in - объект класса java.util.Scanner для ввода данных пользователем
+     * logger - объект класса org.apache.logging.log4j.Logger для логирования
+     */
     ArrayList<String> params = new ArrayList<>();
     Controller controller = new Controller();
     Scanner in = new Scanner(System.in);
     private final Logger logger = LogManager.getRootLogger();
 
+    /**
+     * Демонстрация главного меню
+     * при запуске приложения
+     */
     public void mainMenu() {
         logger.debug("Main menu is opened.");
         System.out.println("\n\tБРОНИРОВАНИЕ ЖД БИЛЕТОВ");
@@ -41,6 +55,10 @@ public class Menu {
         logger.debug("Main menu is closed.");
     }
 
+    /**
+     * Демонстрация навигационной панели
+     * после успешной регистрации или авторизации пользователя
+     */
     public void ticketMenu() {
         logger.debug("Ticket menu is opened.");
         System.out.println("\n\tНАВИГАЦИОННАЯ ПАНЕЛЬ");
@@ -74,6 +92,10 @@ public class Menu {
         logger.debug("Ticket menu is closed.");
     }
 
+    /**
+     * Демонстрация меню регистрации
+     * после запроса пользователя на регистрацию
+     */
     public void registrationMenu() {
         logger.debug("Registration menu is opened.");
         params.clear();
@@ -112,6 +134,10 @@ public class Menu {
         logger.debug("Registration menu is closed.");
     }
 
+    /**
+     * Демонстрация меню авторизации
+     * после запроса пользователя на авторизацию
+     */
     public void signInMenu() {
         logger.debug("SignIn menu is opened.");
         params.clear();
@@ -141,6 +167,10 @@ public class Menu {
         logger.debug("SignIn menu is closed.");
     }
 
+    /**
+     * Демонстрация меню подтверждения выхода из системы
+     * после запроса пользователя на выход из системы
+     */
     public void signOutMenu() {
         logger.debug("SignOut menu is opened.");
         params.clear();
@@ -162,6 +192,10 @@ public class Menu {
         logger.debug("SignOut menu is closed.");
     }
 
+    /**
+     * Демонстрация меню просмотра расписания поездов
+     * после запроса пользователя на покупку нового билета
+     */
     public void seeTimetableMenu() {
         logger.debug("Timetable menu is opened.");
         params.clear();
@@ -203,12 +237,18 @@ public class Menu {
         logger.debug("Timetable menu is closed.");
     }
 
+    /**
+     * Демонстрация меню покупки билета
+     * после указания пользователем желаемого маршрута
+     */
+    //FIXME: see controller.commands.BuyTicket.class
     public void buyTicketMenu(ArrayList<String> params) {
         logger.debug("BuyTicket menu is opened.");
         params.remove(0);
         params.add(0, "BUY_TICKET");
         System.out.println("\n\tВЫБОР ПОЕЗДА");
         System.out.print("Время отправления: "); params.add(in.next());
+
         switch (controller.doAction(params)) {
             case "BUY_TICKET_MENU" : {
                 System.out.println("\nК сожалению, вам отказано в покупке билета.");
@@ -243,16 +283,30 @@ public class Menu {
         logger.debug("BuyTicket menu is closed.");
     }
 
+    /**
+     * Демонстрация меню возврата билета
+     * после запроса пользователя на возврат билета
+     */
+    //TODO: see controller.commands.ReturnTicket.class
     public void returnTicketMenu() {
         logger.debug("ReturnTicket menu is opened.");
         logger.debug("ReturnTicket menu is closed.");
     }
 
+    /**
+     * Демонстрация меню просмотра билетов
+     * после запроса пользователя на просмотр текущих билетов
+     */
+    //TODO: see controller.commands.SeeCurrentTickets.class
     public void seeCurrentTicketsMenu() {
         logger.debug("CurrentTickets menu is opened.");
         logger.debug("CurrentTickets menu is closed.");
     }
 
+    /**
+     * Демонстрация меню выхода из приложения
+     * после запроса пользователя на закрытие приложения
+     */
     public void exitMenu() {
         logger.debug("Exit menu is opened.");
         System.out.println("\n\tВЫЙТИ ИЗ ПРИЛОЖЕНИЯ");

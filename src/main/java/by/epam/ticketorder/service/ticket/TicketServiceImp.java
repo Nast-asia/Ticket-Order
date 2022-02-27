@@ -19,15 +19,19 @@ public class TicketServiceImp implements TicketService {
         Train train = trainDAO.readTrain(pointA, pointB, date, departureTime);
         if (train.getFreeSeatsNumber() == 0 && !train.getTrainType().equals("Электричка"))
             throw new ServiceException("No free seats.");
+        //TODO: compare Train.price to Passenger.creditCardAccount
+        //FIXME: try to change TrainDAOImp
+        //FIXME: Passenger.online can help
     }
 
     @Override
     public void returnTicket(Ticket ticket) {
-
+        //TODO: realize this method
     }
 
     @Override
     public ArrayList<Ticket> seeCurrentTickets() {
+        //TODO: realize this method
         return null;
     }
 }

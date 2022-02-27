@@ -8,9 +8,18 @@ import java.util.ArrayList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+/**
+ * Класс команды авторизации
+ */
+
 public class SignIn implements Command {
     private final Logger logger = LogManager.getRootLogger();
 
+    /**
+     * Авторизация пользователя в системе
+     * @param request данные о вызываемой команде и введенные пользователем
+     * @return название меню, вызванное действиями пользователя
+     */
     @Override
     public String execute(ArrayList<String> request) {
         logger.debug("SignIn method is started.");
@@ -20,6 +29,7 @@ public class SignIn implements Command {
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         PassengerService passengerService = serviceFactory.getPassengerService();
 
+        //TODO: change Passenger.online in service.PassengerService.signIn()
         try {
             passengerService.signIn(login, password);
             logger.debug("SignIn method is closed.");
