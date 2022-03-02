@@ -6,6 +6,7 @@ public class Route {
     private String date;
     private String departureTime;
     private String arrivalTime;
+    private double price;
 
     public String getPointA() {
         return pointA;
@@ -43,12 +44,20 @@ public class Route {
         this.arrivalTime = arrivalTime;
     }
 
-    public Route(String pointA, String pointB, String date, String departureTime, String arrivalTime) {
+    public double getPrice() {
+        return price;
+    }
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public Route(String pointA, String pointB, String date, String departureTime, String arrivalTime, double price) {
         this.pointA = pointA;
         this.pointB = pointB;
         this.date = date;
         this.departureTime = departureTime;
         this.arrivalTime = arrivalTime;
+        this.price = price;
     }
 
     public Route() {
