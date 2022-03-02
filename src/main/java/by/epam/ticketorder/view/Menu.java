@@ -241,7 +241,6 @@ public class Menu {
      * Демонстрация меню покупки билета
      * после указания пользователем желаемого маршрута
      */
-    //FIXME: see controller.commands.BuyTicket.class
     public void buyTicketMenu(ArrayList<String> params) {
         logger.debug("BuyTicket menu is opened.");
         params.remove(0);
@@ -252,20 +251,7 @@ public class Menu {
         switch (controller.doAction(params)) {
             case "BUY_TICKET_MENU" : {
                 System.out.println("\nК сожалению, вам отказано в покупке билета.");
-                System.out.println("\nЖелаете попробовать еще раз? (Y / N)");
-                do {
-                    String req = in.next().toUpperCase();
-                    if (req.equals("Y") || req.equals("YES")) {
-                        buyTicketMenu(params);
-                        break;
-                    } else if (req.equals("N") || req.equals("NO")) {
-                        ticketMenu();
-                        break;
-                    } else {
-                        logger.error("Invalid input data.");
-                        System.out.println("\nНеверный ввод данных, повторите попытку.");
-                    }
-                } while (true);
+                ticketMenu();
                 break;
             }
             case "SEE_CURRENT_TICKETS_MENU" : {

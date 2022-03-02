@@ -32,7 +32,6 @@ public class BuyTicket implements Command {
         TicketService ticketService = serviceFactory.getTicketService();
 
         try {
-            //FIXME: see service.TicketService.buyTicket()
             ticketService.buyTicket(pointA, pointB, date, departureTime);
             logger.debug("BuyTicket method is closed.");
             return "SEE_CURRENT_TICKETS_MENU";
@@ -42,5 +41,4 @@ public class BuyTicket implements Command {
             return "BUY_TICKET_MENU";
         }
     }
-
 }

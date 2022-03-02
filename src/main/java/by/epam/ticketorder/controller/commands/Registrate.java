@@ -2,6 +2,7 @@ package by.epam.ticketorder.controller.commands;
 
 import by.epam.ticketorder.beans.CreditCard;
 import by.epam.ticketorder.beans.Passenger;
+import by.epam.ticketorder.beans.Ticket;
 import by.epam.ticketorder.controller.Command;
 import by.epam.ticketorder.service.ServiceFactory;
 import by.epam.ticketorder.service.passenger.PassengerService;
@@ -34,13 +35,11 @@ public class Registrate implements Command {
         );
         String login = request.get(6);
         String password = request.get(7);
-        Passenger passenger = new Passenger(login, password, name, surname, passportNumber, creditCard, null);
-        //TODO: boolean online = true
+        Passenger passenger = new Passenger(login, password, name, surname, passportNumber, creditCard, new ArrayList<Ticket>());
 
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         PassengerService passengerService = serviceFactory.getPassengerService();
 
-        //TODO: change Passenger.online in servise.PassengerService.registrate()
         try {
             passengerService.registrate(passenger);
             logger.debug("Registrate method is closed.");

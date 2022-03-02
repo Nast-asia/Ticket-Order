@@ -1,5 +1,7 @@
 package by.epam.ticketorder.service.train;
 
-public interface TrainService {
+import by.epam.ticketorder.beans.Train;
 
+public interface TrainService {
+    void buyTicket(Train train);
 }

@@ -26,7 +26,15 @@ public class PassengerDAOImp implements PassengerDAO {
         return null;
     }
 
-    //TODO: public boolean readPassengerOnline(String login)
-    //TODO: public boolean changePassengerOnline(String login)
-    //FIXME: add method to PassengerDAO interface
+    @Override
+    public void changePassengerInfo(Passenger passenger) {
+        ArrayList<Passenger> usersDS = datasource.getUsers();
+        for (int i = 0; i < usersDS.size(); i++) {
+            if (usersDS.get(i).getLogin().equals(passenger.getLogin())) {
+                usersDS.remove(i);
+                usersDS.add(i, passenger);
+                break;
+            }
+        }
+    }
 }

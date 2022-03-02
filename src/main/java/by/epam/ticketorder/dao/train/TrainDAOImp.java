@@ -31,7 +31,19 @@ public class TrainDAOImp implements TrainDAO {
 
     @Override
     public ArrayList<Train> readAllTrains() {
+        return datasource.getTrains();
+    }
+
+    @Override
+    public void changeTrainInfo(Train train) {
         ArrayList<Train> trainsDS = datasource.getTrains();
-        return trainsDS;
+        for (int i = 0; i < trainsDS.size(); i++) {
+            if (trainsDS.get(i).getRoute().equals(train.getRoute())) {
+                trainsDS.remove(i);
+                trainsDS.add(i, train);
+                break;
+            }
+        }
+        datasource.setTrains(trainsDS);
     }
 }

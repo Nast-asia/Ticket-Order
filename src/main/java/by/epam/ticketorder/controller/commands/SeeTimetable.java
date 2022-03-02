@@ -34,19 +34,34 @@ public class SeeTimetable implements Command {
         try {
             ArrayList<Train> timetable = routeService.seeTimetable(pointA, pointB, date);
             System.out.println("\n" + pointA + "-" + pointB + " " + date);
-            for (int i = 0; i < timetable.size(); i++) {
-                System.out.println(timetable.get(i).getRoute().getDepartureTime() + " - " +
-                        timetable.get(i).getRoute().getArrivalTime() + "\t" +
-                        timetable.get(i).getTrainType() + "\t" +
-                        "Места: " + timetable.get(i).getFreeSeatsNumber()
-                );
-            }
+            printTimetable(timetable);
             logger.debug("SeeTimetable method is closed.");
             return "BUY_TICKET_MENU";
         } catch (Exception e) {
             logger.debug("SeeTimetable method is closed.");
             logger.error(e.getMessage());
             return "SEE_TIMETABLE_MENU";
+        }
+    }
+
+    private void printTimetable(ArrayList<Train> timetable) {
+        for (int i = 0; i < timetable.size(); i++) {
+            Train train = timetable.get(i);
+            if (train.getFreeSeatsNumber() > 0 && !train.getTrainType().equals("Электричка")) {
+                System.out.println(train.getRoute().getDepartureTime() + " - " +
+                        train.getRoute().getArrivalTime() + "\t" +
+                        train.getTrainType() + "\t" +
+                        "Места: " + train.getFreeSeatsNumber() + "\t" +
+                        "Цена: " + train.getRoute().getPrice()
+                );
+            }
+            if (train.getTrainType().equals("Электричка")) {
+                System.out.println(train.getRoute().getDepartureTime() + " - " +
+                        train.getRoute().getArrivalTime() + "\t" +
+                        train.getTrainType() + "\t" +
+                        "Цена: " + train.getRoute().getPrice()
+                );
+            }
         }
     }
 }

@@ -1,27 +1,39 @@
 package by.epam.ticketorder.service.ticket;
 
+import by.epam.ticketorder.beans.Passenger;
 import by.epam.ticketorder.beans.Ticket;
 import by.epam.ticketorder.beans.Train;
 import by.epam.ticketorder.dao.DAOFactory;
-import by.epam.ticketorder.dao.ticket.TicketDAO;
 import by.epam.ticketorder.dao.train.TrainDAO;
 import by.epam.ticketorder.exceptions.ServiceException;
+import by.epam.ticketorder.service.ServiceFactory;
+import by.epam.ticketorder.service.passenger.PassengerService;
+import by.epam.ticketorder.service.session.SessionService;
+import by.epam.ticketorder.service.train.TrainService;
 
 import java.util.ArrayList;
 
 public class TicketServiceImp implements TicketService {
+
     @Override
     public void buyTicket(String pointA, String pointB, String date, String departureTime) throws ServiceException {
         DAOFactory daoObjectFactory = DAOFactory.getInstance();
-        TicketDAO ticketDAO = daoObjectFactory.getTicketDAO();
         TrainDAO trainDAO = daoObjectFactory.getTrainDAO();
 
         Train train = trainDAO.readTrain(pointA, pointB, date, departureTime);
         if (train.getFreeSeatsNumber() == 0 && !train.getTrainType().equals("Электричка"))
             throw new ServiceException("No free seats.");
-        //TODO: compare Train.price to Passenger.creditCardAccount
-        //FIXME: try to change TrainDAOImp
-        //FIXME: Passenger.online can help
+
+        ServiceFactory serviceFactory = ServiceFactory.getInstance();
+        SessionService sessionService = serviceFactory.getSessionService();
+        PassengerService passengerService = serviceFactory.getPassengerService();
+        TrainService trainService = serviceFactory.getTrainService();
+
+        Passenger passenger = sessionService.readPassengerSession();
+
+        Ticket ticket = new Ticket(train.getRoute(), train.getFreeSeatsNumber());
+        passengerService.buyTicket(passenger, ticket);
+        trainService.buyTicket(train);
     }
 
     @Override
