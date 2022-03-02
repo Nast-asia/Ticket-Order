@@ -4,6 +4,8 @@ import by.epam.ticketorder.service.passenger.PassengerService;
 import by.epam.ticketorder.service.passenger.PassengerServiceImp;
 import by.epam.ticketorder.service.route.RouteService;
 import by.epam.ticketorder.service.route.RouteServiceImp;
+import by.epam.ticketorder.service.session.SessionService;
+import by.epam.ticketorder.service.session.SessionServiceImp;
 import by.epam.ticketorder.service.ticket.TicketService;
 import by.epam.ticketorder.service.ticket.TicketServiceImp;
 import by.epam.ticketorder.service.train.TrainService;
@@ -34,5 +36,10 @@ public final class ServiceFactory {
     private final TicketService ticketService = new TicketServiceImp();
     public TicketService getTicketService() {
         return ticketService;
+    }
+
+    private final SessionService sessionService = new SessionServiceImp();
+    public SessionService getSessionService() {
+        return sessionService;
     }
 }
