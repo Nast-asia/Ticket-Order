@@ -62,22 +62,18 @@ public class Menu {
     public void ticketMenu() {
         logger.debug("Ticket menu is opened.");
         System.out.println("\n\tНАВИГАЦИОННАЯ ПАНЕЛЬ");
-        System.out.println("1. Купить билет\n2. Сдать билет\n" +
-                "3. Посмотреть приобретённые билеты" + "\n4. Выйти");
+        System.out.println("1. Купить билет\n" +
+                "2. Приобретённые билеты" + "\n3. Выйти");
         switch (in.next()) {
             case "1" : {
                 seeTimetableMenu();
                 break;
             }
             case "2" : {
-                returnTicketMenu();
-                break;
-            }
-            case "3" : {
                 seeCurrentTicketsMenu();
                 break;
             }
-            case "4" : {
+            case "3" : {
                 signOutMenu();
                 mainMenu();
                 break;
@@ -283,9 +279,53 @@ public class Menu {
      * Демонстрация меню просмотра билетов
      * после запроса пользователя на просмотр текущих билетов
      */
-    //TODO: see controller.commands.SeeCurrentTickets.class
     public void seeCurrentTicketsMenu() {
         logger.debug("CurrentTickets menu is opened.");
+        params.clear();
+        params.add("SEE_CURRENT_TICKETS");
+        System.out.println("\n\tПРОСМОТР БИЛЕТОВ");
+        switch(controller.doAction(params)) {
+            case "CONTINUE" : {
+                boolean flag = true;
+                do {
+                    System.out.println("\n1. Сдать билет\n" +
+                            "2. Купить билет\n3. Главное меню");
+                    switch (in.next()) {
+                        case "1" : {
+                            returnTicketMenu();
+                            flag = false;
+                            break;
+                        }
+                        case "2" : {
+                            seeTimetableMenu();
+                            flag = false;
+                            break;
+                        }
+                        case "3" : {
+                            ticketMenu();
+                            flag = false;
+                            break;
+                        }
+                        default : {
+                            logger.error("Invalid input data.");
+                            System.out.println("\nНеверный ввод данных, повторите попытку.");
+                            break;
+                        }
+                    }
+                } while(flag);
+                break;
+            }
+            case "TICKET_MENU" : {
+                System.out.println("\nУ вас нет приобретённых билетов.");
+                ticketMenu();
+                break;
+            }
+            default: {
+                logger.fatal("METHOD ERROR! CHECK THE CODE!");
+                System.out.println("\nНепредвиденный сбой системы...");
+                break;
+            }
+        }
         logger.debug("CurrentTickets menu is closed.");
     }
 

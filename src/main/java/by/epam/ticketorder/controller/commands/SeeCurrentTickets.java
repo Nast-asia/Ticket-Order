@@ -1,10 +1,15 @@
 package by.epam.ticketorder.controller.commands;
 
+import by.epam.ticketorder.beans.Route;
+import by.epam.ticketorder.beans.Ticket;
+import by.epam.ticketorder.beans.Train;
 import by.epam.ticketorder.controller.Command;
 import by.epam.ticketorder.service.ServiceFactory;
 import by.epam.ticketorder.service.passenger.PassengerService;
 
 import java.util.ArrayList;
+
+import by.epam.ticketorder.service.ticket.TicketService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -22,15 +27,30 @@ public class SeeCurrentTickets implements Command {
      */
     @Override
     public String execute(ArrayList<String> request) {
-        //TODO: change service.TicketService.seeCurrentTickets()
-
         logger.debug("SeeCurrentTickets method is started.");
-
-        //FIXME: PassengerService -> TicketService
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
-        PassengerService passengerService = serviceFactory.getPassengerService();
+        TicketService ticketService = serviceFactory.getTicketService();
 
-        logger.debug("SeeCurrentTickets method is closed.");
-        return null;
+        try {
+            printTickets(ticketService.seeCurrentTickets());
+            logger.debug("SeeCurrentTickets method is closed.");
+            return "CONTINUE";
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+            logger.debug("SeeCurrentTickets method is closed.");
+            return "TICKET_MENU";
+        }
+    }
+
+    private void printTickets(ArrayList<Ticket> tickets) {
+        for (int i = 0; i < tickets.size(); i++) {
+            Ticket ticket = tickets.get(i);
+            Route route = ticket.getRoute();
+            System.out.println((i + 1) + ".\t" + route.getPointA() + "-" + route.getPointB() + "\t" +
+                    route.getDate() + "\n" +
+                    route.getDepartureTime() + " - " + route.getArrivalTime() + "\t" +
+                    "Место: " + ticket.getSeat()
+            );
+        }
     }
 }

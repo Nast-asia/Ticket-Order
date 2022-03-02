@@ -42,8 +42,14 @@ public class TicketServiceImp implements TicketService {
     }
 
     @Override
-    public ArrayList<Ticket> seeCurrentTickets() {
-        //TODO: realize this method
-        return null;
+    public ArrayList<Ticket> seeCurrentTickets() throws ServiceException {
+        ServiceFactory serviceFactory = ServiceFactory.getInstance();
+        SessionService sessionService = serviceFactory.getSessionService();
+
+        Passenger passenger = sessionService.readPassengerSession();
+
+        if (passenger.getTickets().size() == 0)
+            throw new ServiceException("Passenger has no tickets.");
+        return passenger.getTickets();
     }
 }

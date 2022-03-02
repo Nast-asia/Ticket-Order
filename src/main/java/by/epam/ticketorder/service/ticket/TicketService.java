@@ -8,5 +8,5 @@ import java.util.ArrayList;
 public interface TicketService {
     void buyTicket(String pointA, String pointB, String date, String departureTime) throws ServiceException;
     void returnTicket(Ticket ticket);
-    ArrayList<Ticket> seeCurrentTickets();
+    ArrayList<Ticket> seeCurrentTickets() throws ServiceException;
 }
