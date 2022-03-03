@@ -245,7 +245,7 @@ public class Menu {
         System.out.print("Время отправления: "); params.add(in.next());
 
         switch (controller.doAction(params)) {
-            case "BUY_TICKET_MENU" : {
+            case "TICKET_MENU" : {
                 System.out.println("\nК сожалению, вам отказано в покупке билета.");
                 ticketMenu();
                 break;

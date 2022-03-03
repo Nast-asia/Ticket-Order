@@ -38,7 +38,7 @@ public class BuyTicket implements Command {
         } catch (Exception e) {
             logger.error(e.getMessage());
             logger.debug("BuyTicket method is closed.");
-            return "BUY_TICKET_MENU";
+            return "TICKET_MENU";
         }
     }
 }

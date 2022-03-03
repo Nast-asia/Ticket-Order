@@ -59,7 +59,7 @@ public class PassengerServiceImp implements PassengerService {
             Route route = tickets.get(i).getRoute();
             if (route.getPointA().equals(ticket.getRoute().getPointA()) &&
                     route.getPointB().equals(ticket.getRoute().getPointB()) &&
-                    route.getDepartureTime().equals(ticket.getRoute().getDepartureTime()))
+                    route.getDate().equals(ticket.getRoute().getDate()))
                 throw new ServiceException("Passenger has ticket on this route.");
         }
         tickets.add(ticket);

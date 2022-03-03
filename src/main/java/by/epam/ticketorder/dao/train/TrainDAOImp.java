@@ -23,7 +23,9 @@ public class TrainDAOImp implements TrainDAO {
             Route route = trainsDS.get(i).getRoute();
             if (route.getPointA().equals(pointA) &&
                     route.getPointB().equals(pointB) &&
-                    route.getDate().equals(date))
+                    route.getDate().equals(date) &&
+                    route.getDepartureTime().equals(departureTime)
+            )
                 return trainsDS.get(i);
         }
         return null;
