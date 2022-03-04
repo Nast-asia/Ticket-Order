@@ -1,5 +1,7 @@
 package by.epam.ticketorder.beans;
 
+import java.util.Objects;
+
 public class Route {
     private String pointA;
     private String pointB;
@@ -61,5 +63,40 @@ public class Route {
     }
 
     public Route() {
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this)
+            return true;
+        if (obj == null)
+            return false;
+        if (obj.getClass() != this.getClass())
+            return false;
+
+        Route that = (Route) obj;
+        return price == that.price &&
+                (pointA != null && pointA.equals(that.getPointA())) &&
+                (pointB != null && pointB.equals(that.getPointB())) &&
+                (date != null && date.equals(that.getDate())) &&
+                (departureTime != null && departureTime.equals(that.getDepartureTime())) &&
+                (arrivalTime != null && arrivalTime.equals(that.getArrivalTime()));
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(pointA, pointB, date, departureTime, arrivalTime, price);
+    }
+
+    @Override
+    public String toString() {
+        return "Route{" +
+                "pointA='" + pointA + '\'' +
+                ", pointB='" + pointB + '\'' +
+                ", date='" + date + '\'' +
+                ", departureTime='" + departureTime + '\'' +
+                ", arrivalTime='" + arrivalTime + '\'' +
+                ", price=" + price +
+                '}';
     }
 }

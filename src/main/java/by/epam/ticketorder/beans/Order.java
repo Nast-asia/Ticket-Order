@@ -1,5 +1,7 @@
 package by.epam.ticketorder.beans;
 
+import java.util.Objects;
+
 public class Order {
     private Passenger passenger;
     private Ticket ticket;
@@ -33,5 +35,34 @@ public class Order {
     }
 
     public Order() {
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this)
+            return true;
+        if (obj == null)
+            return false;
+        if (obj.getClass() != this.getClass())
+            return false;
+
+        Order that = (Order) obj;
+        return paymentStatus == that.paymentStatus &&
+                (passenger != null && passenger.equals(that.getPassenger())) &&
+                (ticket != null && ticket.equals(that.getTicket()));
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(passenger, ticket, paymentStatus);
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "passenger=" + passenger +
+                ", ticket=" + ticket +
+                ", paymentStatus=" + paymentStatus +
+                '}';
     }
 }
