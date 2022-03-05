@@ -5,6 +5,7 @@ import by.epam.ticketorder.controller.Command;
 import by.epam.ticketorder.service.ServiceFactory;
 import by.epam.ticketorder.service.route.RouteService;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -45,19 +46,20 @@ public class SeeTimetable implements Command {
     }
 
     private void printTimetable(ArrayList<Train> timetable) {
+        SimpleDateFormat timeFormatter = new SimpleDateFormat("HH:mm");
         for (int i = 0; i < timetable.size(); i++) {
             Train train = timetable.get(i);
             if (train.getFreeSeatsNumber() > 0 && !train.getTrainType().equals("Электричка")) {
-                System.out.println(train.getRoute().getDepartureTime() + " - " +
-                        train.getRoute().getArrivalTime() + "\t" +
+                System.out.println(timeFormatter.format(train.getRoute().getDepartureTime()) + " - " +
+                        timeFormatter.format(train.getRoute().getArrivalTime()) + "\t" +
                         train.getTrainType() + "\t" +
                         "Места: " + train.getFreeSeatsNumber() + "\t" +
                         "Цена: " + train.getRoute().getPrice()
                 );
             }
             if (train.getTrainType().equals("Электричка")) {
-                System.out.println(train.getRoute().getDepartureTime() + " - " +
-                        train.getRoute().getArrivalTime() + "\t" +
+                System.out.println(timeFormatter.format(train.getRoute().getDepartureTime()) + " - " +
+                        timeFormatter.format(train.getRoute().getArrivalTime()) + "\t" +
                         train.getTrainType() + "\t" +
                         "Цена: " + train.getRoute().getPrice()
                 );

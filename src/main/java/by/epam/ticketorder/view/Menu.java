@@ -199,7 +199,7 @@ public class Menu {
         System.out.println("\n\tВЫБОР МАРШРУТА");
         System.out.print("Пункт отправления: "); params.add(in.next());
         System.out.print("Пункт прибытия: "); params.add(in.next());
-        System.out.print("Дата (DD.MM.HH): "); params.add(in.next());
+        System.out.print("Дата (DD.MM.YYYY): "); params.add(in.next());
 
         switch (controller.doAction(params)) {
             case "BUY_TICKET_MENU" : {
