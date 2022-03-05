@@ -10,6 +10,7 @@ import by.epam.ticketorder.exceptions.ServiceException;
 import by.epam.ticketorder.service.ServiceFactory;
 import by.epam.ticketorder.service.session.SessionService;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 public class PassengerServiceImp implements PassengerService {
@@ -54,12 +55,15 @@ public class PassengerServiceImp implements PassengerService {
 
         // пассажир может купить только 1 билет
         // на указанную дату в указанном направлении
+        SimpleDateFormat dateFormatter = new SimpleDateFormat("dd.MM.yyyy");
         ArrayList<Ticket> tickets = passenger.getTickets();
         for (int i = 0; i < tickets.size(); i++) {
             Route route = tickets.get(i).getRoute();
+            String routeDate = dateFormatter.format(route.getDepartureTime());
+            String ticketDate = dateFormatter.format(ticket.getRoute().getDepartureTime());
             if (route.getPointA().equals(ticket.getRoute().getPointA()) &&
                     route.getPointB().equals(ticket.getRoute().getPointB()) &&
-                    route.getDate().equals(ticket.getRoute().getDate()))
+                    routeDate.equals(ticketDate))
                 throw new ServiceException("Passenger has ticket on this route.");
         }
         tickets.add(ticket);

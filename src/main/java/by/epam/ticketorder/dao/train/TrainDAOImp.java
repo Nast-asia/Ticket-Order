@@ -4,6 +4,7 @@ import by.epam.ticketorder.beans.Route;
 import by.epam.ticketorder.beans.Train;
 import by.epam.ticketorder.dao.DataSource;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 public class TrainDAOImp implements TrainDAO {
@@ -17,14 +18,15 @@ public class TrainDAOImp implements TrainDAO {
     }
 
     @Override
-    public Train readTrain(String pointA, String pointB, String date, String departureTime) {
+    public Train readTrain(String pointA, String pointB, String date, String time) {
+        SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy HH:mm");
         ArrayList<Train> trainsDS = datasource.getTrains();
         for (int i = 0; i < trainsDS.size(); i++) {
             Route route = trainsDS.get(i).getRoute();
+            String departureTime = date + " " + time;
             if (route.getPointA().equals(pointA) &&
                     route.getPointB().equals(pointB) &&
-                    route.getDate().equals(date) &&
-                    route.getDepartureTime().equals(departureTime)
+                    formatter.format(route.getDepartureTime()).equals(departureTime)
             )
                 return trainsDS.get(i);
         }
