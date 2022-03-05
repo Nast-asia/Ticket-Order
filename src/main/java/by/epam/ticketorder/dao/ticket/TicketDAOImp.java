@@ -25,7 +25,8 @@ public class TicketDAOImp implements TicketDAO {
     @Override
     public void addTicket(Passenger passenger, Ticket ticket) {
         ArrayList<Passenger> usersDS = datasource.getUsers();
-        TreeSet<Ticket> userTickets = new TreeSet<>();
+        TicketComparator ticketComparator = new TicketComparator();
+        TreeSet<Ticket> userTickets = new TreeSet<>(ticketComparator);
         for (int i = 0; i < usersDS.size(); i++) {
             String login = usersDS.get(i).getLogin();
             if (login.equals(passenger.getLogin())) {

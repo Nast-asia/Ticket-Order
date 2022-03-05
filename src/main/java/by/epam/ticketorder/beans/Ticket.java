@@ -2,7 +2,7 @@ package by.epam.ticketorder.beans;
 
 import java.util.Objects;
 
-public class Ticket {
+public class Ticket implements Comparable<Ticket>{
     private Route route;
     private int seat;
 
@@ -53,5 +53,11 @@ public class Ticket {
                 "route=" + route +
                 ", seat=" + seat +
                 '}';
+    }
+
+    // сортировка билетов по времени отправления
+    @Override
+    public int compareTo(Ticket t) {
+        return route.getDepartureTime().compareTo(t.getRoute().getDepartureTime());
     }
 }
