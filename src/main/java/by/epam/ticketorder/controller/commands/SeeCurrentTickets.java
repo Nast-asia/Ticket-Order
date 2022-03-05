@@ -7,6 +7,7 @@ import by.epam.ticketorder.controller.Command;
 import by.epam.ticketorder.service.ServiceFactory;
 import by.epam.ticketorder.service.passenger.PassengerService;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import by.epam.ticketorder.service.ticket.TicketService;
@@ -43,13 +44,14 @@ public class SeeCurrentTickets implements Command {
     }
 
     private void printTickets(ArrayList<Ticket> tickets) {
+        SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy HH:mm");
         for (int i = 0; i < tickets.size(); i++) {
             Ticket ticket = tickets.get(i);
             Route route = ticket.getRoute();
-            System.out.println((i + 1) + ".\t" + route.getPointA() + "-" + route.getPointB() + "\t" +
-                    route.getDate() + "\n" +
-                    route.getDepartureTime() + " - " + route.getArrivalTime() + "\t" +
-                    "Место: " + ticket.getSeat()
+            System.out.println(route.getPointA() + "-" + route.getPointB() + "\t" +
+                    "Место: " + ticket.getSeat() + "\t" +
+                    formatter.format(route.getDepartureTime()) + " - " +
+                    formatter.format(route.getArrivalTime())
             );
         }
     }
