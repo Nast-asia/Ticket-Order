@@ -1,13 +1,18 @@
 package by.epam.ticketorder.beans;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Objects;
+
+// SimpleDateFormat dateFormatter = new SimpleDateFormat("dd.MM.yyyy");
+// SimpleDateFormat timeFormatter = new SimpleDateFormat("HH:mm");
 
 public class Route {
     private String pointA;
     private String pointB;
-    private String date;
-    private String departureTime;
-    private String arrivalTime;
+    private Date departureTime;
+    private Date arrivalTime;
     private double price;
 
     public String getPointA() {
@@ -24,25 +29,17 @@ public class Route {
         this.pointB = pointB;
     }
 
-    // переопределить
-    public String getDate() {
-        return date;
-    }
-    public void setDate(String date) {
-        this.date = date;
-    }
-
-    public String getDepartureTime() {
+    public Date getDepartureTime() {
         return departureTime;
     }
-    public void setDepartureTime(String departureTime) {
+    public void setDepartureTime(Date departureTime) {
         this.departureTime = departureTime;
     }
 
-    public String getArrivalTime() {
+    public Date getArrivalTime() {
         return arrivalTime;
     }
-    public void setArrivalTime(String arrivalTime) {
+    public void setArrivalTime(Date arrivalTime) {
         this.arrivalTime = arrivalTime;
     }
 
@@ -53,13 +50,22 @@ public class Route {
         this.price = price;
     }
 
-    public Route(String pointA, String pointB, String date, String departureTime, String arrivalTime, double price) {
+    public Route(String pointA, String pointB, String departureTime, String arrivalTime, double price) {
+        SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy HH:mm");
+
         this.pointA = pointA;
         this.pointB = pointB;
-        this.date = date;
-        this.departureTime = departureTime;
-        this.arrivalTime = arrivalTime;
         this.price = price;
+        try {
+            this.departureTime = formatter.parse(departureTime);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        try {
+            this.arrivalTime = formatter.parse(arrivalTime);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
     public Route() {
@@ -78,14 +84,13 @@ public class Route {
         return price == that.price &&
                 (pointA != null && pointA.equals(that.getPointA())) &&
                 (pointB != null && pointB.equals(that.getPointB())) &&
-                (date != null && date.equals(that.getDate())) &&
                 (departureTime != null && departureTime.equals(that.getDepartureTime())) &&
                 (arrivalTime != null && arrivalTime.equals(that.getArrivalTime()));
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(pointA, pointB, date, departureTime, arrivalTime, price);
+        return Objects.hash(pointA, pointB, departureTime, arrivalTime, price);
     }
 
     @Override
@@ -93,7 +98,6 @@ public class Route {
         return "Route{" +
                 "pointA='" + pointA + '\'' +
                 ", pointB='" + pointB + '\'' +
-                ", date='" + date + '\'' +
                 ", departureTime='" + departureTime + '\'' +
                 ", arrivalTime='" + arrivalTime + '\'' +
                 ", price=" + price +
