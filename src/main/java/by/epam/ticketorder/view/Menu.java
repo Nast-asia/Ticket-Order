@@ -272,6 +272,9 @@ public class Menu {
     //TODO: see controller.commands.ReturnTicket.class
     public void returnTicketMenu() {
         logger.debug("ReturnTicket menu is opened.");
+        System.out.println("По техническим причинам система не поддерживает " +
+                "возврат билетов через приложение. Пожалуйста, обратитесь в кассы.");
+        ticketMenu();
         logger.debug("ReturnTicket menu is closed.");
     }
 
