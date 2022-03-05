@@ -10,6 +10,7 @@ import org.junit.*;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
+import java.util.TreeSet;
 
 public class PassengerTest {
     ServiceFactory serviceFactory = ServiceFactory.getInstance();
@@ -24,7 +25,7 @@ public class PassengerTest {
         passenger = new Passenger("Login", "Password",
                 "Name", "Surname", "PassportNumber",
                 new CreditCard("CreditCardNumber", 1000),
-                new ArrayList<Ticket>()
+                new TreeSet<>()
         );
     }
 

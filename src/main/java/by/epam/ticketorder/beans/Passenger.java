@@ -1,7 +1,7 @@
 package by.epam.ticketorder.beans;
 
-import java.util.ArrayList;
 import java.util.Objects;
+import java.util.TreeSet;
 
 public class Passenger {
     private String login;
@@ -10,7 +10,7 @@ public class Passenger {
     private String surname;
     private String passportNumber;
     private CreditCard creditCard;
-    private ArrayList<Ticket> tickets;
+    private TreeSet<Ticket> tickets;
 
     public String getLogin() {
         return login;
@@ -54,14 +54,14 @@ public class Passenger {
         this.creditCard = creditCard;
     }
 
-    public ArrayList<Ticket> getTickets() {
+    public TreeSet<Ticket> getTickets() {
         return tickets;
     }
-    public void setTickets(ArrayList<Ticket> tickets) {
+    public void setTickets(TreeSet<Ticket> tickets) {
         this.tickets = tickets;
     }
 
-    public Passenger(String login, String password, String name, String surname, String passportNumber, CreditCard creditCard, ArrayList<Ticket> tickets) {
+    public Passenger(String login, String password, String name, String surname, String passportNumber, CreditCard creditCard, TreeSet<Ticket> tickets) {
         this.login = login;
         this.password = password;
         this.name = name;

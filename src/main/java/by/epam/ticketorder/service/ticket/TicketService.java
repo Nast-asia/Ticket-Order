@@ -3,10 +3,10 @@ package by.epam.ticketorder.service.ticket;
 import by.epam.ticketorder.beans.Ticket;
 import by.epam.ticketorder.exceptions.ServiceException;
 
-import java.util.ArrayList;
+import java.util.TreeSet;
 
 public interface TicketService {
     void buyTicket(String pointA, String pointB, String date, String departureTime) throws ServiceException;
     void returnTicket(Ticket ticket);
-    ArrayList<Ticket> seeCurrentTickets() throws ServiceException;
+    TreeSet<Ticket> seeCurrentTickets() throws ServiceException;
 }

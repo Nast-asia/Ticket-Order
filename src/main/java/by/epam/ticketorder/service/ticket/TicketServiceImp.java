@@ -12,6 +12,7 @@ import by.epam.ticketorder.service.session.SessionService;
 import by.epam.ticketorder.service.train.TrainService;
 
 import java.util.ArrayList;
+import java.util.TreeSet;
 
 public class TicketServiceImp implements TicketService {
 
@@ -42,7 +43,7 @@ public class TicketServiceImp implements TicketService {
     }
 
     @Override
-    public ArrayList<Ticket> seeCurrentTickets() throws ServiceException {
+    public TreeSet<Ticket> seeCurrentTickets() throws ServiceException {
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         SessionService sessionService = serviceFactory.getSessionService();
 

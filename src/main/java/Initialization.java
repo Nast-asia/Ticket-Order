@@ -5,6 +5,7 @@ import by.epam.ticketorder.dao.passenger.PassengerDAO;
 import by.epam.ticketorder.dao.train.TrainDAO;
 
 import java.util.ArrayList;
+import java.util.TreeSet;
 
 /**
  * Класс инициализации данных перед вызовом меню
@@ -18,8 +19,8 @@ public class Initialization {
         DAOFactory daoObjectFactory = DAOFactory.getInstance();
 
         PassengerDAO passengerDAO = daoObjectFactory.getPassengerDAO();
-        passengerDAO.addPassenger(new Passenger("Nast.asia", "1111", "Анастасия", "Назаревич", "KB654321", new CreditCard("1234 1234 134 1234", 75.0), new ArrayList<Ticket>()));
-        passengerDAO.addPassenger(new Passenger("Test", "test", "Name", "Surname", "KB654321", new CreditCard("1234 1234 134 1234", 11.0), new ArrayList<Ticket>()));
+        passengerDAO.addPassenger(new Passenger("Nast.asia", "1111", "Анастасия", "Назаревич", "KB654321", new CreditCard("1234 1234 134 1234", 75.0), new TreeSet<>()));
+        passengerDAO.addPassenger(new Passenger("Test", "test", "Name", "Surname", "KB654321", new CreditCard("1234 1234 134 1234", 11.0), new TreeSet<>()));
 
         TrainDAO trainDAO = daoObjectFactory.getTrainDAO();
         trainDAO.addTrain(new Train(new Route("МИНСК", "БРЕСТ", "01.03.2022 12:00", "01.03.2022 16:00", 10.20), "Эконом-класс", 48));

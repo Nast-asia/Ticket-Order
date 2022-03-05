@@ -12,6 +12,7 @@ import by.epam.ticketorder.service.session.SessionService;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.TreeSet;
 
 public class PassengerServiceImp implements PassengerService {
     @Override
@@ -56,9 +57,9 @@ public class PassengerServiceImp implements PassengerService {
         // пассажир может купить только 1 билет
         // на указанную дату в указанном направлении
         SimpleDateFormat dateFormatter = new SimpleDateFormat("dd.MM.yyyy");
-        ArrayList<Ticket> tickets = passenger.getTickets();
-        for (int i = 0; i < tickets.size(); i++) {
-            Route route = tickets.get(i).getRoute();
+        TreeSet<Ticket> tickets = passenger.getTickets();
+        for (Ticket t : tickets) {
+            Route route = t.getRoute();
             String routeDate = dateFormatter.format(route.getDepartureTime());
             String ticketDate = dateFormatter.format(ticket.getRoute().getDepartureTime());
             if (route.getPointA().equals(ticket.getRoute().getPointA()) &&

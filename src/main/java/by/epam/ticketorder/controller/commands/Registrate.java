@@ -8,6 +8,8 @@ import by.epam.ticketorder.service.ServiceFactory;
 import by.epam.ticketorder.service.passenger.PassengerService;
 
 import java.util.ArrayList;
+import java.util.TreeSet;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -35,7 +37,7 @@ public class Registrate implements Command {
         );
         String login = request.get(6);
         String password = request.get(7);
-        Passenger passenger = new Passenger(login, password, name, surname, passportNumber, creditCard, new ArrayList<Ticket>());
+        Passenger passenger = new Passenger(login, password, name, surname, passportNumber, creditCard, new TreeSet<>());
 
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         PassengerService passengerService = serviceFactory.getPassengerService();
