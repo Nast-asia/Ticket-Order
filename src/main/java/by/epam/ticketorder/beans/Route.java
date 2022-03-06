@@ -18,6 +18,7 @@ public class Route {
     public String getPointA() {
         return pointA;
     }
+
     public void setPointA(String pointA) {
         this.pointA = pointA;
     }
@@ -25,6 +26,7 @@ public class Route {
     public String getPointB() {
         return pointB;
     }
+
     public void setPointB(String pointB) {
         this.pointB = pointB;
     }
@@ -32,6 +34,7 @@ public class Route {
     public Date getDepartureTime() {
         return departureTime;
     }
+
     public void setDepartureTime(Date departureTime) {
         this.departureTime = departureTime;
     }
@@ -39,6 +42,7 @@ public class Route {
     public Date getArrivalTime() {
         return arrivalTime;
     }
+
     public void setArrivalTime(Date arrivalTime) {
         this.arrivalTime = arrivalTime;
     }
@@ -46,6 +50,7 @@ public class Route {
     public double getPrice() {
         return price;
     }
+
     public void setPrice(double price) {
         this.price = price;
     }

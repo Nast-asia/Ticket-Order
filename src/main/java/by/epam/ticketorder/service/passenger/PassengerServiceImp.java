@@ -11,7 +11,6 @@ import by.epam.ticketorder.service.ServiceFactory;
 import by.epam.ticketorder.service.session.SessionService;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.TreeSet;
 
 public class PassengerServiceImp implements PassengerService {
@@ -23,7 +22,6 @@ public class PassengerServiceImp implements PassengerService {
             throw new ServiceException("Login already exists.");
         passengerDAO.addPassenger(passenger);
 
-        // сессия пассажира
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         SessionService sessionService = serviceFactory.getSessionService();
         sessionService.addPassengerSession(passenger);
@@ -54,8 +52,6 @@ public class PassengerServiceImp implements PassengerService {
         creditCard.setCreditCardAccount(creditCard.getCreditCardAccount() - price);
         passenger.setCreditCard(creditCard);
 
-        // пассажир может купить только 1 билет
-        // на указанную дату в указанном направлении
         SimpleDateFormat dateFormatter = new SimpleDateFormat("dd.MM.yyyy");
         TreeSet<Ticket> tickets = passenger.getTickets();
         for (Ticket t : tickets) {

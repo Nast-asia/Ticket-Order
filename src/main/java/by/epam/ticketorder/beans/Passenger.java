@@ -15,6 +15,7 @@ public class Passenger {
     public String getLogin() {
         return login;
     }
+
     public void setLogin(String login) {
         this.login = login;
     }
@@ -22,6 +23,7 @@ public class Passenger {
     public String getPassword() {
         return password;
     }
+
     public void setPassword(String password) {
         this.password = password;
     }
@@ -29,6 +31,7 @@ public class Passenger {
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -36,6 +39,7 @@ public class Passenger {
     public String getSurname() {
         return surname;
     }
+
     public void setSurname(String surname) {
         this.surname = surname;
     }
@@ -43,6 +47,7 @@ public class Passenger {
     public String getPassportNumber() {
         return passportNumber;
     }
+
     public void setPassportNumber(String passportNumber) {
         this.passportNumber = passportNumber;
     }
@@ -50,6 +55,7 @@ public class Passenger {
     public CreditCard getCreditCard() {
         return creditCard;
     }
+
     public void setCreditCard(CreditCard creditCard) {
         this.creditCard = creditCard;
     }
@@ -57,6 +63,7 @@ public class Passenger {
     public TreeSet<Ticket> getTickets() {
         return tickets;
     }
+
     public void setTickets(TreeSet<Ticket> tickets) {
         this.tickets = tickets;
     }

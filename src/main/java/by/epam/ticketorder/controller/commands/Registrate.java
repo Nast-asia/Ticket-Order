@@ -2,7 +2,6 @@ package by.epam.ticketorder.controller.commands;
 
 import by.epam.ticketorder.beans.CreditCard;
 import by.epam.ticketorder.beans.Passenger;
-import by.epam.ticketorder.beans.Ticket;
 import by.epam.ticketorder.controller.Command;
 import by.epam.ticketorder.service.ServiceFactory;
 import by.epam.ticketorder.service.passenger.PassengerService;
@@ -22,6 +21,7 @@ public class Registrate implements Command {
 
     /**
      * Регистрация пользователя
+     *
      * @param request данные о вызываемой команде и введенные пользователем
      * @return название меню, вызванное действиями пользователя
      */

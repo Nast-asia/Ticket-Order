@@ -10,6 +10,7 @@ public class Train {
     public Route getRoute() {
         return route;
     }
+
     public void setRoute(Route route) {
         this.route = route;
     }
@@ -17,6 +18,7 @@ public class Train {
     public String getTrainType() {
         return trainType;
     }
+
     public void setTrainType(String trainType) {
         this.trainType = trainType;
     }
@@ -24,6 +26,7 @@ public class Train {
     public int getFreeSeatsNumber() {
         return freeSeatsNumber;
     }
+
     public void setFreeSeatsNumber(int freeSeatsNumber) {
         this.freeSeatsNumber = freeSeatsNumber;
     }

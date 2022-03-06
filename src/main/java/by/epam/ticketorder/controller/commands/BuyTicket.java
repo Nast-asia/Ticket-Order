@@ -5,6 +5,7 @@ import by.epam.ticketorder.service.ServiceFactory;
 import by.epam.ticketorder.service.ticket.TicketService;
 
 import java.util.ArrayList;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -17,6 +18,7 @@ public class BuyTicket implements Command {
 
     /**
      * Покупка билета пользователем
+     *
      * @param request данные о вызываемой команде и введенные пользователем
      * @return название меню, вызванное действиями пользователя
      */

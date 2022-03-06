@@ -1,10 +1,8 @@
 import by.epam.ticketorder.beans.*;
 import by.epam.ticketorder.dao.DAOFactory;
-import by.epam.ticketorder.dao.DataSource;
 import by.epam.ticketorder.dao.passenger.PassengerDAO;
 import by.epam.ticketorder.dao.train.TrainDAO;
 
-import java.util.ArrayList;
 import java.util.TreeSet;
 
 /**
@@ -19,7 +17,6 @@ public class Initialization {
         DAOFactory daoObjectFactory = DAOFactory.getInstance();
 
         PassengerDAO passengerDAO = daoObjectFactory.getPassengerDAO();
-        // номер паспорта состоит из 2 букв и 7 цифр
         passengerDAO.addPassenger(new Passenger("Nast.asia", "1111", "Анастасия", "Назаревич", "KB6543210", new CreditCard("1234 1234 134 1234", 75.0), new TreeSet<>()));
         passengerDAO.addPassenger(new Passenger("Test", "test", "Name", "Surname", "KB6543210", new CreditCard("1234 1234 134 1234", 11.0), new TreeSet<>()));
 

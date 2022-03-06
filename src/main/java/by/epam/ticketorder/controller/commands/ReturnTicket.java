@@ -5,6 +5,7 @@ import by.epam.ticketorder.service.ServiceFactory;
 import by.epam.ticketorder.service.passenger.PassengerService;
 
 import java.util.ArrayList;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -17,16 +18,15 @@ public class ReturnTicket implements Command {
 
     /**
      * Возврат билета пользователем
+     *
      * @param request данные о вызываемой команде и введенные пользователем
      * @return название меню, вызванное действиями пользователя
      */
     @Override
     public String execute(ArrayList<String> request) {
-        //TODO: change service.TicketService.returnTicket()
 
         logger.debug("ReturnTicket method is started.");
 
-        //FIXME: PassengerService -> TicketService
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         PassengerService passengerService = serviceFactory.getPassengerService();
 

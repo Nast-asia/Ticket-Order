@@ -2,13 +2,14 @@ package by.epam.ticketorder.beans;
 
 import java.util.Objects;
 
-public class Ticket implements Comparable<Ticket>{
+public class Ticket implements Comparable<Ticket> {
     private Route route;
     private int seat;
 
     public Route getRoute() {
         return route;
     }
+
     public void setRoute(Route route) {
         this.route = route;
     }
@@ -16,6 +17,7 @@ public class Ticket implements Comparable<Ticket>{
     public int getSeat() {
         return seat;
     }
+
     public void setSeat(int seat) {
         this.seat = seat;
     }

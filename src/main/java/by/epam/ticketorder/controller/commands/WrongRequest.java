@@ -3,6 +3,7 @@ package by.epam.ticketorder.controller.commands;
 import by.epam.ticketorder.controller.Command;
 
 import java.util.ArrayList;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -15,6 +16,7 @@ public class WrongRequest implements Command {
 
     /**
      * Метод - некорректный выбор пользователя при вызове команды
+     *
      * @param request данные о вызываемой команде и введенные пользователем
      * @return сообщение о некорректности данных
      */

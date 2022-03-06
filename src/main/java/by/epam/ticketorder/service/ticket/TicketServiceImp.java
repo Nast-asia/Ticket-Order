@@ -11,7 +11,6 @@ import by.epam.ticketorder.service.passenger.PassengerService;
 import by.epam.ticketorder.service.session.SessionService;
 import by.epam.ticketorder.service.train.TrainService;
 
-import java.util.ArrayList;
 import java.util.TreeSet;
 
 public class TicketServiceImp implements TicketService {
@@ -39,7 +38,6 @@ public class TicketServiceImp implements TicketService {
 
     @Override
     public void returnTicket(Ticket ticket) {
-        //TODO: realize this method
     }
 
     @Override

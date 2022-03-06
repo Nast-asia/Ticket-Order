@@ -1,6 +1,5 @@
 package by.epam.ticketorder.service.route;
 
-import by.epam.ticketorder.beans.Route;
 import by.epam.ticketorder.beans.Train;
 import by.epam.ticketorder.exceptions.ServiceException;
 

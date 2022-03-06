@@ -5,6 +5,7 @@ import by.epam.ticketorder.service.Session;
 
 public class SessionServiceImp implements SessionService {
     Session session = new Session();
+
     @Override
     public void addPassengerSession(Passenger passenger) {
         session.setOnlinePassenger(passenger);

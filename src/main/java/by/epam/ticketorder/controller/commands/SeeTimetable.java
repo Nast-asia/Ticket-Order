@@ -7,6 +7,7 @@ import by.epam.ticketorder.service.route.RouteService;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -19,6 +20,7 @@ public class SeeTimetable implements Command {
 
     /**
      * Просмотр пользователем расписания поездов
+     *
      * @param request данные о вызываемой команде и введенные пользователем
      * @return название меню, вызванное действиями пользователя
      */

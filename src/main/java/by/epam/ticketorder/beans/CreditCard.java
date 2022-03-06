@@ -9,6 +9,7 @@ public class CreditCard {
     public String getCreditCardNumber() {
         return creditCardNumber;
     }
+
     public void setCreditCardNumber(String creditCardNumber) {
         this.creditCardNumber = creditCardNumber;
     }
@@ -16,6 +17,7 @@ public class CreditCard {
     public double getCreditCardAccount() {
         return creditCardAccount;
     }
+
     public void setCreditCardAccount(double creditCardAccount) {
         this.creditCardAccount = creditCardAccount;
     }

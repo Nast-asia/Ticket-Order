@@ -6,7 +6,6 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.function.UnaryOperator;
 import java.util.regex.Pattern;
 
 /**
@@ -35,19 +34,19 @@ public class Menu {
         System.out.println("\n\tБРОНИРОВАНИЕ ЖД БИЛЕТОВ");
         System.out.println("1. Войти\n2. Зарегистрироваться\n3. Закрыть приложение");
         switch (in.next()) {
-            case "1" : {
+            case "1": {
                 signInMenu();
                 break;
             }
-            case "2" : {
+            case "2": {
                 registrationMenu();
                 break;
             }
-            case "3" : {
+            case "3": {
                 exitMenu();
                 break;
             }
-            default : {
+            default: {
                 logger.error("Invalid input data.");
                 System.out.println("\nНеверный ввод данных, повторите попытку.");
                 mainMenu();
@@ -67,20 +66,20 @@ public class Menu {
         System.out.println("1. Купить билет\n" +
                 "2. Приобретённые билеты" + "\n3. Выйти");
         switch (in.next()) {
-            case "1" : {
+            case "1": {
                 seeTimetableMenu();
                 break;
             }
-            case "2" : {
+            case "2": {
                 seeCurrentTicketsMenu();
                 break;
             }
-            case "3" : {
+            case "3": {
                 signOutMenu();
                 mainMenu();
                 break;
             }
-            default : {
+            default: {
                 logger.error("Invalid input data.");
                 System.out.println("\nНеверный ввод данных, повторите попытку.");
                 ticketMenu();
@@ -99,8 +98,10 @@ public class Menu {
         params.clear();
         params.add("REGISTRATE");
         System.out.println("\n\tРЕГИСТРАЦИОННАЯ ФОРМА");
-        System.out.print("Имя: "); params.add(in.next());
-        System.out.print("Фамилия: "); params.add(in.next());
+        System.out.print("Имя: ");
+        params.add(in.next());
+        System.out.print("Фамилия: ");
+        params.add(in.next());
         while (true) {
             Pattern pattern = Pattern.compile("[A-Z]{2}[0-9]{7}");
             System.out.print("Номер паспорта: ");
@@ -108,8 +109,7 @@ public class Menu {
             if (pattern.matcher(passportNumber).matches()) {
                 params.add(passportNumber);
                 break;
-            }
-            else {
+            } else {
                 System.out.println("\nНеверный ввод данных, повторите попытку.");
             }
         }
@@ -121,8 +121,7 @@ public class Menu {
             if (pattern.matcher(creditCardNumber).matches()) {
                 params.add(creditCardNumber);
                 break;
-            }
-            else {
+            } else {
                 System.out.println("\nНеверный ввод данных, повторите попытку.");
             }
         }
@@ -139,22 +138,25 @@ public class Menu {
             }
         }
 
-        System.out.print("Логин: "); params.add(in.next());
-        System.out.print("Пароль: "); params.add(in.next());
+        System.out.print("Логин: ");
+        params.add(in.next());
+        System.out.print("Пароль: ");
+        params.add(in.next());
 
         boolean wrongLogin = true;
-        while(wrongLogin) {
-            switch(controller.doAction(params)) {
-                case "TICKET_MENU" : {
+        while (wrongLogin) {
+            switch (controller.doAction(params)) {
+                case "TICKET_MENU": {
                     logger.info("Registration is good.");
                     System.out.println("\nРегистрация прошла успешно.");
                     ticketMenu();
                     wrongLogin = false;
                     break;
                 }
-                case "WRONG_REQUEST" : {
+                case "WRONG_REQUEST": {
                     System.out.println("\nЛогин уже существует, введите другое значение.");
-                    System.out.print("Логин: "); params.set(6, in.next());
+                    System.out.print("Логин: ");
+                    params.set(6, in.next());
                     break;
                 }
                 default: {
@@ -176,17 +178,19 @@ public class Menu {
         params.clear();
         params.add("SIGN_IN");
         System.out.println("\n\tВОЙТИ В СИСТЕМУ");
-        System.out.print("Логин: "); params.add(in.next());
-        System.out.print("Пароль: "); params.add(in.next());
+        System.out.print("Логин: ");
+        params.add(in.next());
+        System.out.print("Пароль: ");
+        params.add(in.next());
 
         switch (controller.doAction(params)) {
-            case "TICKET_MENU" : {
+            case "TICKET_MENU": {
                 logger.info("User is signed in.");
                 System.out.println("\nВы вошли в систему.");
                 ticketMenu();
                 break;
             }
-            case "SIGN_IN_MENU" : {
+            case "SIGN_IN_MENU": {
                 System.out.println("\nНеверный логин или пароль.");
                 signInMenu();
                 break;
@@ -234,16 +238,19 @@ public class Menu {
         params.clear();
         params.add("SEE_TIMETABLE");
         System.out.println("\n\tВЫБОР МАРШРУТА");
-        System.out.print("Пункт отправления: "); params.add(in.next());
-        System.out.print("Пункт прибытия: "); params.add(in.next());
-        System.out.print("Дата (DD.MM.YYYY): "); params.add(in.next());
+        System.out.print("Пункт отправления: ");
+        params.add(in.next());
+        System.out.print("Пункт прибытия: ");
+        params.add(in.next());
+        System.out.print("Дата (DD.MM.YYYY): ");
+        params.add(in.next());
 
         switch (controller.doAction(params)) {
-            case "BUY_TICKET_MENU" : {
+            case "BUY_TICKET_MENU": {
                 buyTicketMenu(params);
                 break;
             }
-            case "SEE_TIMETABLE_MENU" : {
+            case "SEE_TIMETABLE_MENU": {
                 System.out.println("\nПо указанному маршруту поездов нет." +
                         "\nЖелаете выбрать другой? (Y / N)");
                 do {
@@ -279,15 +286,16 @@ public class Menu {
         params.remove(0);
         params.add(0, "BUY_TICKET");
         System.out.println("\n\tВЫБОР ПОЕЗДА");
-        System.out.print("Время отправления: "); params.add(in.next());
+        System.out.print("Время отправления: ");
+        params.add(in.next());
 
         switch (controller.doAction(params)) {
-            case "TICKET_MENU" : {
+            case "TICKET_MENU": {
                 System.out.println("\nК сожалению, вам отказано в покупке билета.");
                 ticketMenu();
                 break;
             }
-            case "SEE_CURRENT_TICKETS_MENU" : {
+            case "SEE_CURRENT_TICKETS_MENU": {
                 logger.info("Ticket is bought.");
                 System.out.println("\nВы успешно приобрели билет.");
                 seeCurrentTicketsMenu();
@@ -306,7 +314,6 @@ public class Menu {
      * Демонстрация меню возврата билета
      * после запроса пользователя на возврат билета
      */
-    //TODO: see controller.commands.ReturnTicket.class
     public void returnTicketMenu() {
         logger.debug("ReturnTicket menu is opened.");
         System.out.println("По техническим причинам система не поддерживает " +
@@ -324,38 +331,38 @@ public class Menu {
         params.clear();
         params.add("SEE_CURRENT_TICKETS");
         System.out.println("\n\tПРОСМОТР БИЛЕТОВ");
-        switch(controller.doAction(params)) {
-            case "CONTINUE" : {
+        switch (controller.doAction(params)) {
+            case "CONTINUE": {
                 boolean flag = true;
                 do {
                     System.out.println("\n1. Сдать билет\n" +
                             "2. Купить билет\n3. Главное меню");
                     switch (in.next()) {
-                        case "1" : {
+                        case "1": {
                             returnTicketMenu();
                             flag = false;
                             break;
                         }
-                        case "2" : {
+                        case "2": {
                             seeTimetableMenu();
                             flag = false;
                             break;
                         }
-                        case "3" : {
+                        case "3": {
                             ticketMenu();
                             flag = false;
                             break;
                         }
-                        default : {
+                        default: {
                             logger.error("Invalid input data.");
                             System.out.println("\nНеверный ввод данных, повторите попытку.");
                             break;
                         }
                     }
-                } while(flag);
+                } while (flag);
                 break;
             }
-            case "TICKET_MENU" : {
+            case "TICKET_MENU": {
                 System.out.println("\nУ вас нет приобретённых билетов.");
                 ticketMenu();
                 break;

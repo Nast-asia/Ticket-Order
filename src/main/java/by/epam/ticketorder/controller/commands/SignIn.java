@@ -5,6 +5,7 @@ import by.epam.ticketorder.service.ServiceFactory;
 import by.epam.ticketorder.service.passenger.PassengerService;
 
 import java.util.ArrayList;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -17,6 +18,7 @@ public class SignIn implements Command {
 
     /**
      * Авторизация пользователя в системе
+     *
      * @param request данные о вызываемой команде и введенные пользователем
      * @return название меню, вызванное действиями пользователя
      */
@@ -29,7 +31,6 @@ public class SignIn implements Command {
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         PassengerService passengerService = serviceFactory.getPassengerService();
 
-        //TODO: change Passenger.online in service.PassengerService.signIn()
         try {
             passengerService.signIn(login, password);
             logger.debug("SignIn method is closed.");

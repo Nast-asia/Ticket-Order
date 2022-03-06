@@ -2,6 +2,7 @@ import by.epam.ticketorder.view.Menu;
 
 /**
  * Класс запуска программы TicketOrder
+ *
  * @author Назаревич Анастасия
  * @version 1.0
  */
@@ -9,6 +10,7 @@ import by.epam.ticketorder.view.Menu;
 public class Main {
     /**
      * Запуск программы
+     *
      * @param args аргументы командной строки
      */
     public static void main(String[] args) {

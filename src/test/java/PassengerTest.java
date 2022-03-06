@@ -1,15 +1,14 @@
 import by.epam.ticketorder.beans.CreditCard;
 import by.epam.ticketorder.beans.Passenger;
-import by.epam.ticketorder.beans.Ticket;
 import by.epam.ticketorder.dao.DAOFactory;
 import by.epam.ticketorder.dao.passenger.PassengerDAO;
 import by.epam.ticketorder.exceptions.ServiceException;
 import by.epam.ticketorder.service.ServiceFactory;
 import by.epam.ticketorder.service.passenger.PassengerService;
 import org.junit.*;
+
 import static org.junit.Assert.*;
 
-import java.util.ArrayList;
 import java.util.TreeSet;
 
 public class PassengerTest {
@@ -43,7 +42,7 @@ public class PassengerTest {
         }
     }
 
-    @Test (expected = ServiceException.class)
+    @Test(expected = ServiceException.class)
     public void testRegistrateExistingLogin() {
         try {
             passengerService.registrate(passenger);
@@ -71,7 +70,7 @@ public class PassengerTest {
         }
     }
 
-    @Test (expected = ServiceException.class)
+    @Test(expected = ServiceException.class)
     public void testSignInInvalidLogin() {
         try {
             passengerService.registrate(passenger);
@@ -85,7 +84,7 @@ public class PassengerTest {
         }
     }
 
-    @Test (expected = ServiceException.class)
+    @Test(expected = ServiceException.class)
     public void testSignInInvalidPassword() {
         try {
             passengerService.registrate(passenger);
