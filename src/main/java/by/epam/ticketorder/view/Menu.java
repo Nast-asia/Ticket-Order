@@ -6,6 +6,8 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.function.UnaryOperator;
+import java.util.regex.Pattern;
 
 /**
  * Класс меню для взаимодействия с пользователем,
@@ -99,9 +101,44 @@ public class Menu {
         System.out.println("\n\tРЕГИСТРАЦИОННАЯ ФОРМА");
         System.out.print("Имя: "); params.add(in.next());
         System.out.print("Фамилия: "); params.add(in.next());
-        System.out.print("Номер паспорта: "); params.add(in.next());
-        System.out.print("Номер банковской карты: "); params.add(in.next());
-        System.out.print("Счёт: "); params.add(in.next());
+        while (true) {
+            Pattern pattern = Pattern.compile("[A-Z]{2}[0-9]{7}");
+            System.out.print("Номер паспорта: ");
+            String passportNumber = in.next();
+            if (pattern.matcher(passportNumber).matches()) {
+                params.add(passportNumber);
+                break;
+            }
+            else {
+                System.out.println("\nНеверный ввод данных, повторите попытку.");
+            }
+        }
+
+        while (true) {
+            Pattern pattern = Pattern.compile("[0-9]{16}");
+            System.out.print("Номер банковской карты: ");
+            String creditCardNumber = in.next();
+            if (pattern.matcher(creditCardNumber).matches()) {
+                params.add(creditCardNumber);
+                break;
+            }
+            else {
+                System.out.println("\nНеверный ввод данных, повторите попытку.");
+            }
+        }
+
+        while (true) {
+            Pattern pattern = Pattern.compile("[0-9]+[\u002E]?[0-9]*");
+            System.out.print("Счёт: ");
+            String creditCardAccount = in.next();
+            if (pattern.matcher(creditCardAccount).matches()) {
+                params.add(creditCardAccount);
+                break;
+            } else {
+                System.out.println("\nНеверный ввод данных, повторите попытку.");
+            }
+        }
+
         System.out.print("Логин: "); params.add(in.next());
         System.out.print("Пароль: "); params.add(in.next());
 
